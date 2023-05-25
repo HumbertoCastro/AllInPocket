@@ -1,23 +1,29 @@
-import logo from './logo.svg';
 import './App.css';
+import { useContext, useEffect } from 'react';
+import Header from './components/Header/Header'
+import Nav from './components/Nav/Nav';
+import pocketContext from './context/pocketContext';
 
 function App() {
+  const {
+    page
+  } = useContext(pocketContext);
+
+  useEffect(() => {
+    console.log(page)
+  })
+
+  const setMainContent = () =>{
+
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      <Nav />
+      {
+        page
+      }
     </div>
   );
 }
