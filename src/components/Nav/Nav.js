@@ -6,6 +6,7 @@ import Calendar from '../Calendar/Calendar';
 import TaskList from '../TaskList/TaskList';
 import Finance from '../Finance/Finance';
 import Email from '../Email/Email';
+import Daily from '../Daily/Daily';
 
 const Nav = () => {
   const {
@@ -17,8 +18,9 @@ const Nav = () => {
   }
 
   return(
-  <div className="flex-row s-btw">
+  <div className="row s-btw nav">
     <ButtonIcon iconSvg={ svgs.calendar } callback={ () => {onClick(<Calendar />)} } />
+    <ButtonIcon iconSvg={ svgs.day } callback={ () => {onClick(<Daily />)} } />
     <ButtonIcon iconSvg={ svgs.taskList } callback={ () => {onClick(<TaskList />)} } />
     <ButtonIcon iconSvg={ svgs.money } callback={ () => {onClick(<Finance />)} } />
     <ButtonIcon iconSvg={ svgs.email } callback={ () => {onClick(<Email />)} } />

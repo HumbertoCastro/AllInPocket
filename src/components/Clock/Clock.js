@@ -6,7 +6,6 @@ const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Sa
 function Clock() {
 
   const d = new Date();
-  console.log(d.getDay());
   let day = weekday[d.getDay()];
 
   useEffect(() => {

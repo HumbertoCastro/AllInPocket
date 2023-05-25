@@ -1,10 +1,5 @@
 body {
   margin-top: 0;
-  padding: 10px;
-}
-
-* {
-  margin-right: 10px;
 }
 
 header {
@@ -61,4 +56,37 @@ button {
 svg {
   width: 6vw;
   height: 6vw;
+}
+
+.nav {
+  width: 90vw;
+  justify-content: space-evenly;
+}
+
+.time-card {
+  height: 10vh;
+  border-radius: 20px;
+  border-radius: 21px;
+  background: #ffffff;
+  box-shadow:  9px 9px 18px #e0e0e0, -9px -9px 18px #ffffff;
+  margin-bottom: 10px;
+  width: 90vw;
+}
+
+.s-center {
+  align-self: center;
+}
+
+.new-task {
+  position: absolute;
+  left: 0; 
+  right: 0; 
+  margin-left: auto; 
+  margin-right: auto; 
+  width: 95vw;
+  height: 80vh;
+  background-color: white;
+  z-index: 2;
+  border: 2px solid black;
+  text-align: center;
 }
