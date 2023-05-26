@@ -4,7 +4,7 @@ import TaskInformation from '../TaskInformation/TaskInformation';
 
 
 const HourlyCard = ({ time, hasTask, callback, task, id, weak }) => {
-  const duration = task.duration;
+  const duration = task.duration ? task.duration : 1;
   const hour = time.slice(0, 2);
   const minutos = time.slice(3, 5);
   return (
