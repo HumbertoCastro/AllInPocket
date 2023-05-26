@@ -78,6 +78,7 @@ const SetNewTask = ({ id, weak }) => {
     setNofTasks(nTasks + 1);
     setTasks(newTasks);
     openInterface(false);
+    localStorage.setItem('tasklist', JSON.stringify(newTasks));
   }
 
   return(

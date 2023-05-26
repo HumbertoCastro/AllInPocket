@@ -7,7 +7,7 @@ import ReturnMinutes from '../helpers/Minutes';
 const weekday = ["Sun","Mon","Tue","Wed","Thur","Fri","Sat"];
 
 function Provider({ children }) {
-  const weakArray = weekday.map((day) => {
+  const weakArray = !localStorage.getItem('tasklist') ? weekday.map((day) => {
     const cardArray = ReturnMinutes.map((x, index) => {
       const objeto = {
         time: x,
@@ -27,7 +27,7 @@ function Provider({ children }) {
       cardArray,
       weak: day,
     };
-  });
+  }) : JSON.parse(localStorage.getItem('tasklist'));
   const [page, setPage] = useState(<Calendar />);
   const [tasks, setTasks] = useState(weakArray);
   const [interfaceNewTask, openInterface] = useState(false);
