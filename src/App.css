@@ -90,3 +90,11 @@ svg {
   border: 2px solid black;
   text-align: center;
 }
+
+.card-div {
+  margin-top: 10px;
+}
+
+.selected {
+  color: blue;
+}

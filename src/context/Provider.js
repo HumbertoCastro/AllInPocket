@@ -4,22 +4,33 @@ import pocketContext from './pocketContext';
 import Calendar from '../components/Calendar/Calendar';
 import ReturnMinutes from '../helpers/Minutes';
 
+const weekday = ["Sun","Mon","Tue","Wed","Thur","Fri","Sat"];
+
 function Provider({ children }) {
-  const cardArray = ReturnMinutes.map((x, index) => {
-    const objeto = {
-      time: x,
-      hasTask: false,
-      task: {
-        title: 'titulo',
-        description: 'description',
-      },
-      id: index,
-    }
-    return objeto
+  const weakArray = weekday.map((day) => {
+    const cardArray = ReturnMinutes.map((x, index) => {
+      const objeto = {
+        time: x,
+        hasTask: false,
+        task: {
+          title: 'titulo',
+          description: 'description',
+        },
+        id: index,
+        weak: day,
+        taskId: 0,
+      }
+      return objeto
+    });
+    return {
+      cardArray,
+      weak: day,
+    };
   });
   const [page, setPage] = useState(<Calendar />);
-  const [tasks, setTasks] = useState(cardArray);
+  const [tasks, setTasks] = useState(weakArray);
   const [interfaceNewTask, openInterface] = useState(false);
+  const [nTasks, setNofTasks] = useState(0);
 
   const contextValue = {
     page,
@@ -28,6 +39,8 @@ function Provider({ children }) {
     setTasks,
     interfaceNewTask,
     openInterface,
+    nTasks,
+    setNofTasks
   };
 
   return (

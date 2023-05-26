@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import TaskInformation from '../TaskInformation/TaskInformation';
 
 
-const HourlyCard = ({ time, hasTask, callback, task, id }) => {
+const HourlyCard = ({ time, hasTask, callback, task, id, weak }) => {
   const hour = time.slice(0, 2);
   const minutos = time.slice(3, 5);
   return (
-    <div className="row">
+    <div className="row card-div">
       <div className="colunm s-center">
         <p className='i-b n-margin'>
           {
@@ -23,7 +23,7 @@ const HourlyCard = ({ time, hasTask, callback, task, id }) => {
           }
         </p>
       </div>
-      <button className='time-card' onClick={ () => callback(id) }>
+      <button className='time-card' onClick={ () => callback(id, weak) }>
         {
           hasTask ? <TaskInformation task={ task } /> : <p>adicionar tarefa</p>
         }
