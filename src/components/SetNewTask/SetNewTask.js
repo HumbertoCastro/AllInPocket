@@ -22,6 +22,7 @@ const SetNewTask = ({ id, weak }) => {
 
   useEffect(() => {
     const currentTask = tasks.filter((weakDay) => weakDay.weak === weak)[0].cardArray.find((x) => x.id === id);
+    setWeakDays([weak]);
     setThisTaskId(currentTask.taskId);
     setTitle(currentTask.task.title);
     setDescription(currentTask.task.description);
