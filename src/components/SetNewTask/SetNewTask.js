@@ -64,7 +64,7 @@ const SetNewTask = ({ id, weak }) => {
       }
       x.cardArray.find((x) => x.id === id).task = newObject;
       x.cardArray.find((x) => x.id === id).hasTask = true;
-      x.cardArray.find((x) => x.id === id).taskId = nTasks + 1;      
+      x.cardArray.find((x) => x.id === id).taskId = nTasks + 1;
     }) : newTasks.filter((weakList) => weakList.weak === weak).forEach((x) => {
       for (let i = id + 1; i < id + duration; i += 1) {
         x.cardArray[i].overlap = true;

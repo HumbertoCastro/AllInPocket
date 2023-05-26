@@ -4,6 +4,7 @@ import TaskInformation from '../TaskInformation/TaskInformation';
 
 
 const HourlyCard = ({ time, hasTask, callback, task, id, weak }) => {
+  const duration = task.duration;
   const hour = time.slice(0, 2);
   const minutos = time.slice(3, 5);
   return (
@@ -23,7 +24,7 @@ const HourlyCard = ({ time, hasTask, callback, task, id, weak }) => {
           }
         </p>
       </div>
-      <button className='time-card' onClick={ () => callback(id, weak) }>
+      <button className='time-card' onClick={ () => callback(id, weak) } style={ {height: duration * 12 + 'vh'} }>
         {
           hasTask ? <TaskInformation task={ task } /> : <p>adicionar tarefa</p>
         }
