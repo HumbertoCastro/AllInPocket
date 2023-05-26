@@ -2,14 +2,15 @@ import React, { useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import pocketContext from '../../context/pocketContext';
 const weekday = ["Sun","Mon","Tue","Wed","Thur","Fri","Sat"];
+const Tempos = ['00:30', '01:00', '01:30', '02:00', '02:30', '03:00', '03:30', '04:00'];
 
-
-const SetNewTask = ({ id, weak }) => {
+const SetNewTask = ({ id, weak }) => {  
   const [title, setTitle] = useState('titulo');
   const [description, setDescription] = useState('Description');
   const [weakDays, setWeakDays] = useState([]);
   const [thisTaskId, setThisTaskId] = useState(0);
   const [onlyOnce, setOnlyOnce] = useState(false);
+  const [duration, setDuration] = useState(1);
 
   const {
     openInterface,
@@ -41,6 +42,7 @@ const SetNewTask = ({ id, weak }) => {
   }
 
   const handleClick = () => {
+    console.log(duration);
     tasks.filter(({ cardArray }) => {
       cardArray.find((x) => x.taskId === thisTaskId) ? (cardArray.find((x) => x.taskId === thisTaskId).hasTask = false) : console.log('');
       cardArray.find((x) => x.taskId === thisTaskId) ? (cardArray.find((x) => x.taskId === thisTaskId).taskId = 0) : console.log('');;
@@ -96,6 +98,16 @@ const SetNewTask = ({ id, weak }) => {
       }} className={ onlyOnce ? 'selected' : '' }>
         Only this time
       </button>
+      <select onChange={({ target: { value } }) => {
+          setDuration(value);
+        }}>
+        <option value="1">How long will it last</option>
+            {
+              Tempos.map((x, index) => (
+                <option value={ index + 1 } key={ `${index}-${x}` }>{ x }</option>
+              ))
+            }
+      </select>
       <button onClick={ handleClick }>
         <p>
           Create New Task
