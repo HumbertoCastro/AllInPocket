@@ -46,7 +46,7 @@ const Daily = () => {
         }
       </div>
       {
-        tasks.filter(({ weak }) => weak === selected)[0].cardArray.map(({ time, hasTask, task, id, weak }) => 
+        tasks.filter(({ weak }) => weak === selected)[0].cardArray.filter((x) => !(x.overlap)).map(({ time, hasTask, task, id, weak }) => 
         (<HourlyCard time={ time } hasTask={ hasTask } callback={ addTask } task={ task } id={ id } weak={ weak } />))
       }
       {

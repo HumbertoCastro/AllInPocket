@@ -42,26 +42,38 @@ const SetNewTask = ({ id, weak }) => {
   }
 
   const handleClick = () => {
-    console.log(duration);
+    console.log(tasks);
     tasks.filter(({ cardArray }) => {
-      cardArray.find((x) => x.taskId === thisTaskId) ? (cardArray.find((x) => x.taskId === thisTaskId).hasTask = false) : console.log('');
-      cardArray.find((x) => x.taskId === thisTaskId) ? (cardArray.find((x) => x.taskId === thisTaskId).taskId = 0) : console.log('');;
-      return cardArray
+      cardArray.find((x) => x.taskId === thisTaskId) ? (cardArray.find((x) => x.taskId === thisTaskId).hasTask = false) : console.log();
+      cardArray.find((x) => x.taskId === thisTaskId) ? (cardArray.find((x) => x.taskId === thisTaskId).taskId = 0) : console.log();
+      for (let i = id + 1; i < parseInt(cardArray[id].task.duration) + id; i += 1) {
+        cardArray[i].overlap = false;
+      }
+      return cardArray;
     });
     const newTasks = tasks;
     const newObject = {
       title,
       description,
+      duration,
     }
     !onlyOnce ? newTasks.filter((weakList) => weakDays.some((x) => x === weakList.weak)).forEach((x) => {
+      for (let i = id + 1; i < id + parseInt(duration); i += 1) {
+        console.log('ta aqui');
+        x.cardArray[i].overlap = true;
+      }
       x.cardArray.find((x) => x.id === id).task = newObject;
       x.cardArray.find((x) => x.id === id).hasTask = true;
       x.cardArray.find((x) => x.id === id).taskId = nTasks + 1;      
     }) : newTasks.filter((weakList) => weakList.weak === weak).forEach((x) => {
+      for (let i = id + 1; i < id + duration; i += 1) {
+        x.cardArray[i].overlap = true;
+      }
       x.cardArray.find((x) => x.id === id).task = newObject;
       x.cardArray.find((x) => x.id === id).hasTask = true;
       x.cardArray.find((x) => x.id === id).taskId = nTasks + 1;      
-    })  
+    })
+    setDuration(0);
     setNofTasks(nTasks + 1);
     setTasks(newTasks);
     openInterface(false);

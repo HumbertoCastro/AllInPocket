@@ -12,6 +12,7 @@ function Provider({ children }) {
       const objeto = {
         time: x,
         hasTask: false,
+        overlap: false,
         task: {
           title: 'titulo',
           description: 'description',
