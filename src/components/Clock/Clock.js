@@ -13,7 +13,7 @@ function Clock() {
   }, []);
 
   return (
-    <div className="row">
+    <div className="row a-center">
       <p id="clock" className="n-margin i-b">0</p>
       <p className="i-b n-margin">{ day }</p>
     </div>

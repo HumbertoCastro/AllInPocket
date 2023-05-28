@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import HourlyCard from '../HourlyCard/HourlyCard';
 import pocketContext from '../../context/pocketContext';
 import SetNewTask from '../SetNewTask/SetNewTask';
+import Checkbox from '../checkbox/Checkbox';
 
 const weekday = ["Sun","Mon","Tue","Wed","Thur","Fri","Sat"];
 
@@ -46,13 +47,7 @@ const Daily = () => {
           ))
         }
       </div>
-      <div className='row'>
-        <button onClick={ () => {
-          setOnly(!onlyTasks);
-        }} className={ onlyTasks ? "selected" : "" }>
-          Only Tasks
-        </button>
-      </div>
+      <Checkbox onClick={ () => setOnly(!onlyTasks) } />
       <button onClick={() => {
         localStorage.clear();
       } }>clear localStorage</button>

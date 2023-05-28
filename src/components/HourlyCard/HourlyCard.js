@@ -5,10 +5,10 @@ import TaskInformation from '../TaskInformation/TaskInformation';
 
 const HourlyCard = ({ callback, task }) => {
   const { time, hasTask, id, weak, color } = task;
-  const duration = task.duration ? task.duration : 1;
+  const duration = task.task.duration ? task.task.duration : 1;
   const hour = time.slice(0, 2);
   const minutos = time.slice(3, 5);
-  console.log(task)
+  console.log(task, duration);
   return (
     <div className="row card-div">
       <div className="colunm s-center">
