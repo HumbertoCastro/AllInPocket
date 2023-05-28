@@ -20,6 +20,7 @@ function Provider({ children }) {
         id: index,
         weak: day,
         taskId: 0,
+        color: '#00000'
       }
       return objeto
     });

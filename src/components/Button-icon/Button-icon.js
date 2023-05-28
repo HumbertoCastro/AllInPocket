@@ -2,13 +2,20 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 
-const ButtonIcon = ({ iconSvg, callback, page }) => (
-  <button className="b-icon" onClick={ callback }>
+const ButtonIcon = ({ iconSvg, callback, id }) => {
+  return (
+  <button className="b-icon" id={ `button-${id}` } onClick={ (button) => {
+    callback();
+    const allButtons = [...document.getElementsByClassName('b-icon')];
+    allButtons.map((x) => x.className = 'b-icon');
+    document.getElementById(`button-${id}`).className = "selected b-icon";
+  } }>
     {
       iconSvg()
     }
   </button>
-);
+  )
+};
 
 ButtonIcon.propTypes = {};
 

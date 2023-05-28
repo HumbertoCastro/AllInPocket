@@ -11,6 +11,7 @@ const Daily = () => {
   const [taskId, setTaskId] = useState(0);
   const [taskWeak, setTaskWeak] = useState("");
   const [selected, setSelected] = useState("Sun");
+  const [onlyTasks, setOnly] = useState(false);
   const {
     tasks,
     setTasks,
@@ -45,9 +46,21 @@ const Daily = () => {
           ))
         }
       </div>
+      <div className='row'>
+        <button onClick={ () => {
+          setOnly(!onlyTasks);
+        }} className={ onlyTasks ? "selected" : "" }>
+          Only Tasks
+        </button>
+      </div>
+      <button onClick={() => {
+        localStorage.clear();
+      } }>clear localStorage</button>
       {
-        tasks.filter(({ weak }) => weak === selected)[0].cardArray.filter((x) => !(x.overlap)).map(({ time, hasTask, task, id, weak }) => 
-        (<HourlyCard time={ time } hasTask={ hasTask } callback={ addTask } task={ task } id={ id } weak={ weak } />))
+        onlyTasks ? tasks.filter(({ weak }) => weak === selected)[0].cardArray.filter((x) => !(x.overlap) && x.hasTask).map((task) => 
+        (<HourlyCard callback={ addTask } task={ task } />)) :
+        tasks.filter(({ weak }) => weak === selected)[0].cardArray.filter((x) => !(x.overlap)).map((task) => 
+        (<HourlyCard callback={ addTask } task={ task } />))
       }
       {
         interfaceNewTask ? <SetNewTask id={ taskId } weak={ taskWeak } /> : null

@@ -11,6 +11,7 @@ const SetNewTask = ({ id, weak }) => {
   const [thisTaskId, setThisTaskId] = useState(0);
   const [onlyOnce, setOnlyOnce] = useState(false);
   const [duration, setDuration] = useState(1);
+  const [color, setColor] = useState('#00000');
 
   const {
     openInterface,
@@ -26,8 +27,10 @@ const SetNewTask = ({ id, weak }) => {
     setThisTaskId(currentTask.taskId);
     setTitle(currentTask.task.title);
     setDescription(currentTask.task.description);
+    console.log(currentTask);
     if ( currentTask.taskId !== 0) {
       const weaksThatRepet = tasks.filter(({ cardArray }) => cardArray.some((x) => x.taskId === currentTask.taskId)).map((y) => y.weak);
+      console.log('weaks that repet', weaksThatRepet);
       setWeakDays(weaksThatRepet);
     }
     const newTaskObject = document.querySelector(".new-task");
@@ -49,6 +52,7 @@ const SetNewTask = ({ id, weak }) => {
       cardArray.find((x) => x.taskId === thisTaskId) ? (cardArray.find((x) => x.taskId === thisTaskId).taskId = 0) : console.log();
       for (let i = id + 1; i < parseInt(cardArray[id].task.duration) + id; i += 1) {
         cardArray[i].overlap = false;
+        cardArray[i].task.duration = '0';
       }
       return cardArray;
     });
@@ -63,16 +67,22 @@ const SetNewTask = ({ id, weak }) => {
         console.log('ta aqui');
         x.cardArray[i].overlap = true;
       }
-      x.cardArray.find((x) => x.id === id).task = newObject;
-      x.cardArray.find((x) => x.id === id).hasTask = true;
-      x.cardArray.find((x) => x.id === id).taskId = nTasks + 1;
+      Object.assign(x.cardArray.find((x) => x.id === id), {
+        task: newObject,
+        hasTask: true,
+        taskId: nTasks + 1,
+        color,
+      })
     }) : newTasks.filter((weakList) => weakList.weak === weak).forEach((x) => {
       for (let i = id + 1; i < id + duration; i += 1) {
         x.cardArray[i].overlap = true;
       }
-      x.cardArray.find((x) => x.id === id).task = newObject;
-      x.cardArray.find((x) => x.id === id).hasTask = true;
-      x.cardArray.find((x) => x.id === id).taskId = nTasks + 1;      
+      Object.assign(x.cardArray.find((x) => x.id === id), {
+        task: newObject,
+        hasTask: true,
+        taskId: nTasks + 1,
+        color,
+      })     
     })
     setDuration(0);
     setNofTasks(nTasks + 1);
@@ -122,6 +132,11 @@ const SetNewTask = ({ id, weak }) => {
               ))
             }
       </select>
+      Choose the color for the task
+      <input type='color' value={ color } name='color' onChange={ ({ target : { value } }) => {
+        setColor(value);
+        console.log(value)
+      }}/>
       <button onClick={ handleClick }>
         <p>
           Create New Task

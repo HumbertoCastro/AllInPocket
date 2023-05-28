@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 
-const TaskInformation = ({ task }) => {
+const TaskInformation = ({ task: { task } }) => {
   const {
     title,
     description,
