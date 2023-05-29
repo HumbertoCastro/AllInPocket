@@ -106,3 +106,41 @@ svg {
 .selected {
   color: blue;
 }
+
+.x-btn {
+  align-self: flex-end;
+}
+
+select {
+  width: 50%;
+  align-self: center;
+  border: 0px 0px solid black;
+}
+
+.colors-div {
+  align-self: center;
+  width: 70vw;
+}
+
+.color-button {
+  width: 7vw;
+  height: 7vw;
+  border-radius: 10px;
+  margin: 5px;
+}
+
+.s-scale {
+  transition: all .2s ease-in-out;
+  transform: scale(1.2);
+}
+
+.no-task {
+  width: 90vw;
+  height: 70vh;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  color: #F0F0F0;
+}

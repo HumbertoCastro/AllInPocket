@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import currentTime from '../../helpers/ClockFunction';
+import currentTime from '../../../helpers/ClockFunction';
 
 const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
 

@@ -1,12 +1,12 @@
 import React, { useContext } from 'react';
-import svgs from '../../helpers/svg';
-import ButtonIcon from '../Button-icon/Button-icon';
-import pocketContext from '../../context/pocketContext';
-import Calendar from '../Calendar/Calendar';
-import TaskList from '../TaskList/TaskList';
-import Finance from '../Finance/Finance';
-import Email from '../Email/Email';
-import Daily from '../Daily/Daily';
+import svgs from '../../../helpers/svg';
+import ButtonIcon from '../../Inputs/Button-icon/Button-icon';
+import pocketContext from '../../../context/pocketContext';
+import Calendar from '../../Calendar/Calendar';
+import Daily from '../../WeeklyPlanerComponents/Daily/Daily';
+import TaskList from '../../TaskListComponents/TaskList/TaskList';
+import Finance from '../../Finance/Finance';
+import Email from '../../Email/Email'
 
 const Nav = () => {
   const {

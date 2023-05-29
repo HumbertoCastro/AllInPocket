@@ -1,9 +1,9 @@
 import React, { useContext, useState } from 'react';
 import PropTypes from 'prop-types';
 import HourlyCard from '../HourlyCard/HourlyCard';
-import pocketContext from '../../context/pocketContext';
+import pocketContext from '../../../context/pocketContext';
 import SetNewTask from '../SetNewTask/SetNewTask';
-import Checkbox from '../checkbox/Checkbox';
+import Checkbox from '../../Inputs/checkbox/Checkbox';
 
 const weekday = ["Sun","Mon","Tue","Wed","Thur","Fri","Sat"];
 

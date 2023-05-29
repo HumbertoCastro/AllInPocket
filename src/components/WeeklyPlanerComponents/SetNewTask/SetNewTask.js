@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import pocketContext from '../../context/pocketContext';
-import svgs from '../../helpers/svg';
-import InputText from '../InputText/InputText';
-import Checkbox from '../checkbox/Checkbox';
-import ColorsSelect from '../ColorsSelect/ColorsSelect';
+import pocketContext from '../../../context/pocketContext';
+import svgs from '../../../helpers/svg';
+import Checkbox from '../../Inputs/checkbox/Checkbox';
+import ColorsSelect from '../../Inputs/ColorsSelect/ColorsSelect';
+import InputText from '../../Inputs/InputText/InputText';
 const weekday = ["Sun","Mon","Tue","Wed","Thur","Fri","Sat"];
 const Tempos = ['00:30', '01:00', '01:30', '02:00', '02:30', '03:00', '03:30', '04:00'];
 
@@ -31,10 +31,8 @@ const SetNewTask = ({ id, weak }) => {
     setThisTaskId(currentTask.taskId);
     setTitle(currentTask.task.title);
     setDescription(currentTask.task.description);
-    console.log(currentTask);
     if ( currentTask.taskId !== 0) {
       const weaksThatRepet = tasks.filter(({ cardArray }) => cardArray.some((x) => x.taskId === currentTask.taskId)).map((y) => y.weak);
-      console.log('weaks that repet', weaksThatRepet);
       setWeakDays(weaksThatRepet);
     }
     const newTaskObject = document.querySelector(".new-task");
@@ -50,10 +48,7 @@ const SetNewTask = ({ id, weak }) => {
   }
 
   const handleClick = () => {
-    console.log(tasks);
     tasks.filter(({ cardArray }) => {
-      cardArray.find((x) => x.taskId === thisTaskId) ? (cardArray.find((x) => x.taskId === thisTaskId).hasTask = false) : console.log();
-      cardArray.find((x) => x.taskId === thisTaskId) ? (cardArray.find((x) => x.taskId === thisTaskId).taskId = 0) : console.log();
       for (let i = id + 1; i < parseInt(cardArray[id].task.duration) + id; i += 1) {
         cardArray[i].overlap = false;
         cardArray[i].task.duration = '0';
@@ -68,7 +63,6 @@ const SetNewTask = ({ id, weak }) => {
     }
     !onlyOnce ? newTasks.filter((weakList) => weakDays.some((x) => x === weakList.weak)).forEach((x) => {
       for (let i = id + 1; i < id + parseInt(duration); i += 1) {
-        console.log('ta aqui');
         x.cardArray[i].overlap = true;
       }
       Object.assign(x.cardArray.find((x) => x.id === id), {

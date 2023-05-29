@@ -1,7 +1,6 @@
 import './App.css';
 import { useContext } from 'react';
-import Header from './components/Header/Header'
-import Nav from './components/Nav/Nav';
+import Header from './components/HeaderComponents/Header/Header'
 import pocketContext from './context/pocketContext';
 
 function App() {
