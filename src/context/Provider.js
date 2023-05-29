@@ -33,8 +33,11 @@ function Provider({ children }) {
   const [tasks, setTasks] = useState(weakArray);
   const [interfaceNewTask, openInterface] = useState(false);
   const [nTasks, setNofTasks] = useState(0);
+  const [notes, setNotes] = useState([]);
 
   const contextValue = {
+    notes,
+    setNotes,
     page,
     setPage,
     tasks,

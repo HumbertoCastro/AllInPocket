@@ -90,7 +90,7 @@ const SetNewTask = ({ id, weak }) => {
   }
 
   return(
-    <div className="new-task colunm s-btw">
+    <div className="new-task colunm s-evenly">
       <button className='x-btn' onClick={() => {
         openInterface(false);
       }}>
