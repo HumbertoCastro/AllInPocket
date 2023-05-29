@@ -1,6 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import pocketContext from '../../context/pocketContext';
+import svgs from '../../helpers/svg';
+import InputText from '../InputText/InputText';
+import Checkbox from '../checkbox/Checkbox';
+import ColorsSelect from '../ColorsSelect/ColorsSelect';
 const weekday = ["Sun","Mon","Tue","Wed","Thur","Fri","Sat"];
 const Tempos = ['00:30', '01:00', '01:30', '02:00', '02:30', '03:00', '03:30', '04:00'];
 
@@ -92,36 +96,37 @@ const SetNewTask = ({ id, weak }) => {
   }
 
   return(
-    <div className="new-task colunm">
+    <div className="new-task colunm s-btw">
       <button className='x-btn' onClick={() => {
         openInterface(false);
       }}>
-        Leave
-      </button>
-      <input type='text' placeholder='name of the task' value={ title } name="title" onChange={ handleChange } />
-      <input type='text' placeholder='Description' value={ description } name="description" onChange={ handleChange } />
-      repet on
-      <div>
         {
-          onlyOnce ? null : (
-            weekday.map((x) => (
-              <button
-                name={ x }
-                className={ weakDays.some((dayname) => dayname === x) ? "selected weak-day" : "weak-day"}
-                onClick={ handleWeakClick }>
-                {
-                  x
-                }
-              </button>
-            ))
-          )
+          svgs.exit()
         }
-      </div>
-      <button onClick={() => {
-        setOnlyOnce(!onlyOnce);
-      }} className={ onlyOnce ? 'selected' : '' }>
-        Only this time
       </button>
+      <InputText name="title" callback={ handleChange } placename="Task Title" />
+      <InputText name="description" callback={ handleChange } placename="Task Description" />
+      {
+        onlyOnce ? null :
+        <div>
+          Repet on:
+          {
+            (
+              weekday.map((x) => (
+                <button
+                  name={ x }
+                  className={ weakDays.some((dayname) => dayname === x) ? "selected weak-day s-scale" : "weak-day"}
+                  onClick={ handleWeakClick }>
+                  {
+                    x
+                  }
+                </button>
+              ))
+            )
+          }
+        </div>
+      }
+      <Checkbox onClick={ () => setOnlyOnce(!onlyOnce) } />
       <select onChange={({ target: { value } }) => {
           setDuration(value);
         }}>
@@ -132,11 +137,9 @@ const SetNewTask = ({ id, weak }) => {
               ))
             }
       </select>
-      Choose the color for the task
-      <input type='color' value={ color } name='color' onChange={ ({ target : { value } }) => {
-        setColor(value);
-        console.log(value)
-      }}/>
+      <label className='colunm s-evenly'>Choose the color for the task
+       <ColorsSelect selectedColor={ color } callback={ setColor }/>
+      </label>
       <button onClick={ handleClick }>
         <p>
           Create New Task

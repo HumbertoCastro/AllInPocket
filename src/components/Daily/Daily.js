@@ -29,6 +29,16 @@ const Daily = () => {
   const handleClick = ({ target: { name } }) => {
     setSelected(name);
   }
+
+  const renderTheTasks = () => {
+    const tasksToRender = onlyTasks ? tasks.filter(({ weak }) => weak === selected)[0].cardArray.filter((x) => !(x.overlap) && x.hasTask).map((task) => 
+    (<HourlyCard callback={ addTask } task={ task } />)) :
+    tasks.filter(({ weak }) => weak === selected)[0].cardArray.filter((x) => !(x.overlap)).map((task) => 
+    (<HourlyCard callback={ addTask } task={ task } />));
+    if (tasksToRender.length > 0) {
+      return tasksToRender;
+    } return (<h1 className='no-task'>No tasks to be displayed</h1>)
+  }
   
   return(
     <div className="colunm s-evenly">
@@ -37,7 +47,7 @@ const Daily = () => {
           weekday.map((day) => (
             <button
               name={ day }
-              className={ selected === day ? "selected" : null }
+              className={ selected === day ? "selected s-scale" : null }
               onClick={ handleClick }
             >
               {
@@ -52,10 +62,7 @@ const Daily = () => {
         localStorage.clear();
       } }>clear localStorage</button>
       {
-        onlyTasks ? tasks.filter(({ weak }) => weak === selected)[0].cardArray.filter((x) => !(x.overlap) && x.hasTask).map((task) => 
-        (<HourlyCard callback={ addTask } task={ task } />)) :
-        tasks.filter(({ weak }) => weak === selected)[0].cardArray.filter((x) => !(x.overlap)).map((task) => 
-        (<HourlyCard callback={ addTask } task={ task } />))
+        renderTheTasks()
       }
       {
         interfaceNewTask ? <SetNewTask id={ taskId } weak={ taskWeak } /> : null

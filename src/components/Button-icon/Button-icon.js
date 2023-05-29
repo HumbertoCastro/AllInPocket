@@ -8,7 +8,7 @@ const ButtonIcon = ({ iconSvg, callback, id }) => {
     callback();
     const allButtons = [...document.getElementsByClassName('b-icon')];
     allButtons.map((x) => x.className = 'b-icon');
-    document.getElementById(`button-${id}`).className = "selected b-icon";
+    document.getElementById(`button-${id}`).className = "selected b-icon s-scale";
   } }>
     {
       iconSvg()
