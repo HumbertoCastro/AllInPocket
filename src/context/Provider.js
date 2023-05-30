@@ -35,8 +35,11 @@ function Provider({ children }) {
   const [interfaceNewTask, openInterface] = useState(false);
   const [nTasks, setNofTasks] = useState(0);
   const [notes, setNotes] = useState(notesList);
+  const [pageName, setPageName] = useState('');
 
   const contextValue = {
+    pageName,
+    setPageName,
     notes,
     setNotes,
     page,

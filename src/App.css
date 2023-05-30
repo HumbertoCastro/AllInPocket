@@ -2,10 +2,25 @@ body {
   margin-top: 0;
 }
 
+* {
+  font-weight: bolder;
+}
+
 header {
   margin-top: 0;
   margin-bottom: 10px;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  height: 8vh;
+  padding-left: 20px;
+  padding-top: 5px;
+}
+
+.pagename {
+  margin-right: 10px;
+}
+
+header h1 {
+  margin-left: 20px;
 }
 
 .row {
@@ -171,7 +186,7 @@ select {
 .new-note {
   margin: auto;
   width: 95vw;
-  height: 85vh;
+  height: 80vh;
   align-items: center;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }

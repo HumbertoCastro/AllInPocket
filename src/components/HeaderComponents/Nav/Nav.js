@@ -19,11 +19,11 @@ const Nav = () => {
 
   return(
   <div className="row s-btw nav">
-    <ButtonIcon iconSvg={ svgs.calendar } callback={ () => {onClick(<Calendar />)} } id="1"/>
-    <ButtonIcon iconSvg={ svgs.day } callback={ () => {onClick(<Daily />)} } id="2" />
-    <ButtonIcon iconSvg={ svgs.taskList } callback={ () => {onClick(<TaskList />)} } id="3" />
-    <ButtonIcon iconSvg={ svgs.money } callback={ () => {onClick(<Finance />)} } id="4" />
-    <ButtonIcon iconSvg={ svgs.email } callback={ () => {onClick(<Email />)} } id="5" />
+    <ButtonIcon iconSvg={ svgs.calendar } callback={ () => {onClick(<Calendar />)} } id="1" name="Calendar" />
+    <ButtonIcon iconSvg={ svgs.day } callback={ () => {onClick(<Daily />)} } id="2" name="Weekly planer" />
+    <ButtonIcon iconSvg={ svgs.taskList } callback={ () => {onClick(<TaskList />)} } id="3" name="Notes" />
+    <ButtonIcon iconSvg={ svgs.money } callback={ () => {onClick(<Finance />)} } id="4" name="Finances" />
+    <ButtonIcon iconSvg={ svgs.email } callback={ () => {onClick(<Email />)} } id="5" name="Email" />
   </div>)
 };
 
