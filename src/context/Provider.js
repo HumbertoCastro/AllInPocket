@@ -29,11 +29,12 @@ function Provider({ children }) {
       weak: day,
     };
   }) : JSON.parse(localStorage.getItem('tasklist'));
+  const notesList = localStorage.getItem('notes') ?  JSON.parse(localStorage.getItem('notes')) : []
   const [page, setPage] = useState(<Calendar />);
   const [tasks, setTasks] = useState(weakArray);
   const [interfaceNewTask, openInterface] = useState(false);
   const [nTasks, setNofTasks] = useState(0);
-  const [notes, setNotes] = useState([]);
+  const [notes, setNotes] = useState(notesList);
 
   const contextValue = {
     notes,

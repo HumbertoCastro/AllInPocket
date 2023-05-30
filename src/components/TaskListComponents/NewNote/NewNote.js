@@ -20,9 +20,11 @@ const NewNote = ({ setNewNote, setNote, notes }) => {
       description,
       color,
       id: notes.length + 1,
+      content: '',
     }
     console.log(noteObject);
     setNote([...notes, noteObject])
+    localStorage.setItem('notes', JSON.stringify([...notes, noteObject]));
     setNewNote(false);
   }
 

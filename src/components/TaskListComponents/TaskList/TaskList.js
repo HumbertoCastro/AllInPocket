@@ -26,7 +26,7 @@ const TaskList = () => {
         <div className='row'>
           {
             notes.map(({ title, description, color, id }) => (
-              <button style={ { backgroundColor: color } } className="note" onClick={ () => {
+              <button style={ { backgroundColor: color } } className="note slit-in-vertical" onClick={ () => {
                 setId(id)
                 setShow(true)
               } }>
@@ -42,7 +42,7 @@ const TaskList = () => {
   return(
     <div className='row'>
       {
-        showNote ? <BlockOfNotes id={ id } notes={ notes }/> :
+        showNote ? <BlockOfNotes id={ id } notes={ notes } setNotes={setNotes} setShow={ setShow } /> :
         ( !newNote ? renderTasks() : <NewNote setNewNote={ setNewNote } setNote={ setNotes } notes={ notes } />)
       }
     </div>

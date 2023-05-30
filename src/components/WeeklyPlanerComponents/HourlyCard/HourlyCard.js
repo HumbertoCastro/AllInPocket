@@ -9,7 +9,7 @@ const HourlyCard = ({ callback, task }) => {
   const hour = time.slice(0, 2);
   const minutos = time.slice(3, 5);
   return (
-    <div className="row card-div">
+    <div className="row card-div slide-in-fwd-center">
       <div className="colunm s-center">
         <p className='i-b n-margin'>
           {

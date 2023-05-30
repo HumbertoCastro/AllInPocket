@@ -5,7 +5,7 @@ import Nav from '../Nav/Nav';
 function App() {
   return (
     <header className="App-header row s-evenly">
-      <h1 className="i-b">All in pocket</h1>
+      <h1 className="i-b animate__backInRight">All in pocket</h1>
       <Clock />
       <Nav />
     </header>

@@ -1,39 +1,31 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
-import InputText from '../../Inputs/InputText/InputText';
 import svgs from '../../../helpers/svg';
 
 
-const BlockOfNotes = ({ id, notes }) => {
-  const [Allnotes, setNotes] = useState([]);
-  const [text, setText] = useState('');
-  const thisNote = notes.find((x) => x.id === id);
+const BlockOfNotes = ({ id, notes, setNotes, setShow }) => {
+  const [text, setText] = useState(notes.find((x) => x.id === id).content);
 
   const handleChange = ({ target: { value } }) => {
     setText(value);
-  }
-
-  const handleClick = () => {
-    setNotes([...Allnotes, text]);
+    notes.find((x) => x.id === id).content = value;
+    setNotes(notes);
+    localStorage.setItem('notes', JSON.stringify(notes));
   }
 
   return(
     <div className='block-note colunm'>
+      <textarea onChange={ handleChange } value={ text } placeholder='Write your notes here'>
+      </textarea>
       <div className='row'>
-        <InputText name="title" callback={ handleChange } placename="new note" />
-        <button onClick={ handleClick }>
+        <button onClick={ () => { 
+          console.log('d')
+          setShow(false)
+           }}>
           {
-            svgs.plus()
+            svgs.exit()
           }
         </button>
       </div>
-      {
-        Allnotes.map((x) => (
-          <div>
-            <h1>{ x }</h1>
-          </div>
-        ))
-      }
     </div>
   )
 };
