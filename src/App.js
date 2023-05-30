@@ -1,7 +1,9 @@
 import './App.css';
+import './Animations.css'
 import { useContext } from 'react';
 import Header from './components/HeaderComponents/Header/Header'
 import pocketContext from './context/pocketContext';
+import Nav from './components/HeaderComponents/Nav/Nav'
 
 function App() {
   const {
@@ -18,6 +20,7 @@ function App() {
       {
         page
       }
+      <Nav />
     </div>
   );
 }

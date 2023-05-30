@@ -1,4 +1,4 @@
-function currentTime() {
+/*function currentTime() {
   let date = new Date(); 
   let hh = date.getHours();
   let mm = date.getMinutes();
@@ -22,4 +22,4 @@ function currentTime() {
   document.getElementById("clock").innerText = time; 
   let t = setTimeout(function(){ currentTime() }, 1000);
 }
-export default currentTime;
+export default currentTime; */
