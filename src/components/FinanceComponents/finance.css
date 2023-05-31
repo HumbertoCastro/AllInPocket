@@ -1,10 +1,16 @@
 .overview-finance {
   margin: auto;
   width: 95vw;
-  height: 24vh;
-  align-items: center;
+  height: 20vh;
+  align-items: start;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
   border-radius: 20px;
+  margin-bottom: 20px;
+}
+
+.overview-finance div {
+  margin-left: 20px;
+  margin-top: 20px;
 }
 
 .overview-finance h1 {
@@ -38,4 +44,8 @@
   align-self: center;
   margin-left: 10px;
   border: none;
+}
+
+.prof-expen {
+  width: 50vw;
 }

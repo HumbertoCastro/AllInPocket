@@ -4,6 +4,7 @@ import '../finance.css'
 import OverViewFinance from '../OverViewFinance/OverViewFinance';
 import MonthExpenses from '../MonthExpenses/MonthExpenses';
 import pocketContext from '../../../context/pocketContext';
+import MonthProfit from '../MonthProfit/MonthProfit';
 
 const monthNames = ["January", "February", "March", "April", "May", "June",
   "July", "August", "September", "October", "November", "December"
@@ -13,14 +14,24 @@ const monthNames = ["January", "February", "March", "April", "May", "June",
 const Finance = () => {
   const date = new Date();
   const thisMonth = monthNames[date.getMonth()];
-  const [month, setMonth] = useState(thisMonth);
 
   const {
     finances,
   } = useContext(pocketContext);
 
+  const [month, setMonth] = useState(thisMonth);
+  const [display, setDisplay] = useState(<MonthExpenses finances={ finances } month={ month }/>);
+
   const handleSelect = ({ target: { value } }) => {
     setMonth(value);
+  }
+
+  const handleSelectTransactions = ({ target: { value }}) => {
+    if (value === 'expenses') {
+      setDisplay(<MonthExpenses finances={ finances } month={ month }/>)
+    } else if (value === 'profit') {
+      setDisplay(<MonthProfit finances={ finances } month={ month }/>)
+    }
   }
 
   return (
@@ -33,7 +44,14 @@ const Finance = () => {
         }
       </select>
       <OverViewFinance finances={ finances } month={ month }/>
-      <MonthExpenses finances={ finances } month={ month }/>
+      <select className='finance-select colunm' onChange={ handleSelectTransactions }>
+        <option value="expenses"> expenses </option>
+        <option value="profit"> profit </option>
+        <option value="grapfhs"> grapfhs </option>
+      </select>
+      {
+        display
+      }
     </div>
   )
 };

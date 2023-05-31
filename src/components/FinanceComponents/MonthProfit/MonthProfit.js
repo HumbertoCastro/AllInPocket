@@ -2,18 +2,19 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 
-const MonthExpenses = ({ month, finances }) => {
+const MonthProfit = ({ month, finances }) => {
   const date = new Date();
   const monthNumber = date.getMonth() > 9 ? date.getMonth() : `0${date.getMonth()}`;
-  const thisMonthExpenses = finances.filter((x) => x.month === month)[0].expenses;
-  console.log(thisMonthExpenses);
+  const thisMonthProfit = finances.filter((x) => x.month === month)[0].profit;
+  console.log(thisMonthProfit);
 
   return (
     <div className='month-expenses'>
+      <p>This Month Expenses</p>
       {
-        thisMonthExpenses.map(({ date, name, type, value, color }) => {
+        thisMonthProfit.map(({ date, name, type, value, color }) => {
           return (
-            <div className='expense-card row s-btw' style={ { borderBottom: "3px solid red" } }>
+            <div className='expense-card row s-btw' style={ { borderBottom: "3px solid green" } }>
               <div>
                 <h1>
                   {
@@ -47,8 +48,8 @@ const MonthExpenses = ({ month, finances }) => {
   )
 }
 
-MonthExpenses.propTypes = {};
+MonthProfit.propTypes = {};
 
-MonthExpenses.defaultProps = {};
+MonthProfit.defaultProps = {};
 
-export default MonthExpenses;
+export default MonthProfit;
