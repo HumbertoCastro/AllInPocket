@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import pocketContext from './pocketContext';
 import Calendar from '../components/Calendar/Calendar';
 import ReturnMinutes from '../helpers/Minutes';
+import yearFinance from '../helpers/mockFinance';
 
 const weekday = ["Sun","Mon","Tue","Wed","Thur","Fri","Sat"];
 
@@ -36,8 +37,11 @@ function Provider({ children }) {
   const [nTasks, setNofTasks] = useState(0);
   const [notes, setNotes] = useState(notesList);
   const [pageName, setPageName] = useState('');
+  const [finances, setFinances] = useState(yearFinance);
 
   const contextValue = {
+    finances, 
+    setFinances,
     pageName,
     setPageName,
     notes,

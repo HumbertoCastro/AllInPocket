@@ -5,7 +5,7 @@ import pocketContext from '../../../context/pocketContext';
 import Calendar from '../../Calendar/Calendar';
 import Daily from '../../WeeklyPlanerComponents/Daily/Daily';
 import TaskList from '../../TaskListComponents/TaskList/TaskList';
-import Finance from '../../Finance/Finance';
+import Finance from '../../FinanceComponents/Finance/Finance';
 import Email from '../../Email/Email'
 
 const Nav = () => {

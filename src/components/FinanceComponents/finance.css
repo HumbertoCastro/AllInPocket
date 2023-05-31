@@ -1,0 +1,41 @@
+.overview-finance {
+  margin: auto;
+  width: 95vw;
+  height: 24vh;
+  align-items: center;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  border-radius: 20px;
+}
+
+.overview-finance h1 {
+  font-size: 15vw;
+}
+
+.month-expenses {
+  margin: 30px auto;
+  width: 95vw;
+  align-items: center;
+  border-radius: 20px;
+}
+
+.month-expenses div {
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
+.expense-card {
+  height: 9vh;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  border-radius: 10px;
+}
+
+.expense-card h1 {
+  font-size: 5vw;
+}
+
+.finance-select {
+  width: 25vw;
+  align-self: center;
+  margin-left: 10px;
+  border: none;
+}
