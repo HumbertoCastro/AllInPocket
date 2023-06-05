@@ -5,6 +5,7 @@ import OverViewFinance from '../OverViewFinance/OverViewFinance';
 import MonthExpenses from '../MonthExpenses/MonthExpenses';
 import pocketContext from '../../../context/pocketContext';
 import MonthProfit from '../MonthProfit/MonthProfit';
+import AllTransactions from '../AllTransactions/AllTransactions';
 
 const monthNames = ["January", "February", "March", "April", "May", "June",
   "July", "August", "September", "October", "November", "December"
@@ -31,6 +32,8 @@ const Finance = () => {
       setDisplay(<MonthExpenses finances={ finances } month={ month }/>)
     } else if (value === 'profit') {
       setDisplay(<MonthProfit finances={ finances } month={ month }/>)
+    } else {
+      setDisplay(<AllTransactions finances={ finances } month={ month }/> )
     }
   }
 
@@ -47,7 +50,7 @@ const Finance = () => {
       <select className='finance-select colunm' onChange={ handleSelectTransactions }>
         <option value="expenses"> expenses </option>
         <option value="profit"> profit </option>
-        <option value="grapfhs"> grapfhs </option>
+        <option value="all"> All </option>
       </select>
       {
         display
