@@ -6,6 +6,9 @@ import ReturnMinutes from '../helpers/Minutes';
 import yearFinance from '../helpers/mockFinance';
 
 const weekday = ["Sun","Mon","Tue","Wed","Thur","Fri","Sat"];
+const types = ['Food', 'Delivery', 'Rent', 'Gym', 'Car insurence', 'Life insurence', 'Cleaning', 'Education', 
+'Light', 'Water', 'Gas', 'Internet', 'Restaurants', 'Drug store', 'Self care', 'Medic', 'Dentist', 'Car', 'Travel', 'Present', 'Cloats'];
+const ptypes = ['Salary' , 'Investiments', 'Sales', 'Others'];
 
 function Provider({ children }) {
   const weakArray = !localStorage.getItem('tasklist') ? weekday.map((day) => {
@@ -32,6 +35,8 @@ function Provider({ children }) {
   }) : JSON.parse(localStorage.getItem('tasklist'));
   const notesList = localStorage.getItem('notes') ?  JSON.parse(localStorage.getItem('notes')) : []
   const [page, setPage] = useState(<Calendar />);
+  const [exTypes, setExtypes] = useState(types);
+  const [prTypes, setPrtypes] = useState(ptypes);
   const [tasks, setTasks] = useState(weakArray);
   const [interfaceNewTask, openInterface] = useState(false);
   const [nTasks, setNofTasks] = useState(0);
@@ -40,6 +45,10 @@ function Provider({ children }) {
   const [finances, setFinances] = useState(yearFinance);
 
   const contextValue = {
+    prTypes,
+    setPrtypes,
+    exTypes,
+    setExtypes,
     finances, 
     setFinances,
     pageName,

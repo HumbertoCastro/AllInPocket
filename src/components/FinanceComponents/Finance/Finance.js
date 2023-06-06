@@ -5,7 +5,7 @@ import OverViewFinance from '../OverViewFinance/OverViewFinance';
 import MonthExpenses from '../MonthExpenses/MonthExpenses';
 import pocketContext from '../../../context/pocketContext';
 import MonthProfit from '../MonthProfit/MonthProfit';
-import AllTransactions from '../AllTransactions/AllTransactions';
+import AddTransaction from '../AddTransaction/AddTransaction';
 
 const monthNames = ["January", "February", "March", "April", "May", "June",
   "July", "August", "September", "October", "November", "December"
@@ -14,43 +14,58 @@ const monthNames = ["January", "February", "March", "April", "May", "June",
 
 const Finance = () => {
   const date = new Date();
-  const thisMonth = monthNames[date.getMonth()];
+  let month = monthNames[date.getMonth()];
 
   const {
     finances,
   } = useContext(pocketContext);
 
-  const [month, setMonth] = useState(thisMonth);
-  const [display, setDisplay] = useState(<MonthExpenses finances={ finances } month={ month }/>);
+  const [atualDisplay, setActualDisplay] = useState('expenses')
+  const [useMonth, setUseMonth] = useState(month);
+  const [display, setDisplay] = useState(<MonthExpenses finances={ finances } month={ useMonth }/>);
+  const [useFinances, setUseFinances] = useState(finances);
 
   const handleSelect = ({ target: { value } }) => {
-    setMonth(value);
+    setUseMonth(value)
+    if (atualDisplay === 'expenses') {
+      setDisplay(<MonthExpenses finances={ useFinances } month={ value }/>)
+    } else if (atualDisplay === 'profit') {
+      setDisplay(<MonthProfit finances={ useFinances } month={ value }/>)
+    }
   }
 
   const handleSelectTransactions = ({ target: { value }}) => {
+    setActualDisplay(value);
     if (value === 'expenses') {
-      setDisplay(<MonthExpenses finances={ finances } month={ month }/>)
+      setDisplay(<MonthExpenses finances={ useFinances } month={ useMonth }/>)
     } else if (value === 'profit') {
-      setDisplay(<MonthProfit finances={ finances } month={ month }/>)
-    } else {
-      setDisplay(<AllTransactions finances={ finances } month={ month }/> )
+      setDisplay(<MonthProfit finances={ useFinances } month={ useMonth }/>)
+    } 
+  }
+
+  const callbackHandleClick = (newFinances) => {
+    setUseFinances(newFinances);
+    if (atualDisplay === 'expenses') {
+      setDisplay(<MonthExpenses finances={ useFinances } month={ useMonth }/>)
+    } else if (atualDisplay === 'profit') {
+      setDisplay(<MonthProfit finances={ useFinances } month={ useMonth }/>)
     }
   }
 
   return (
     <div>
-      <select className='finance-select colunm' onChange={ handleSelect } value={ month }>
+      <select className='finance-select colunm' onChange={ handleSelect } value={ useMonth }>
         {
           monthNames.map((x) => (
             <option value={x}>{ x }</option>
           ))
         }
       </select>
-      <OverViewFinance finances={ finances } month={ month }/>
+      <OverViewFinance finances={ useFinances } month={ useMonth }/>
+      <AddTransaction callback={ callbackHandleClick }/>
       <select className='finance-select colunm' onChange={ handleSelectTransactions }>
-        <option value="expenses"> expenses </option>
-        <option value="profit"> profit </option>
-        <option value="all"> All </option>
+        <option> expenses </option>
+        <option> profit </option>
       </select>
       {
         display

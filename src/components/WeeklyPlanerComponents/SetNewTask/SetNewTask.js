@@ -120,7 +120,7 @@ const SetNewTask = ({ id, weak }) => {
           }
         </div>
       }
-      <Checkbox onClick={ () => setOnlyOnce(!onlyOnce) } />
+      <Checkbox onClick={ () => setOnlyOnce(!onlyOnce) } name="Show only tasks" />
       <select onChange={({ target: { value } }) => {
           setDuration(value);
         }}>
