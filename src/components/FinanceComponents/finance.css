@@ -76,6 +76,15 @@
   margin-bottom: 20px;
 }
 
+.add-btn {
+  align-items: center;
+  margin: auto;
+}
+
+.add-btn p {
+  margin-right: 10px;  
+}
+
 .add-finance .form {
   width: 40vw;
 }
@@ -86,6 +95,24 @@
   border-radius: 12px;
   height: 6vh;
   align-items: center;
+}
+
+.in-btn {
+  flex-grow: 1;
+}
+
+.delete {
+  height: 70%;
+  align-self: center;
+}
+
+.delete svg {
+  height: 40%;
+  background-color: none;
+}
+
+.delete p {
+  margin: 0;
 }
 
 .scale-in-left {

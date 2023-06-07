@@ -5,12 +5,9 @@ import pocketContext from '../../../context/pocketContext';
 import InputText from '../../Inputs/InputText/InputText';
 import svgs from '../../../helpers/svg';
 
-const types = ['Salary' , 'Investiments', 'Sales', 'Others']
-
-const MonthProfit = ({ month, finances }) => {
+const MonthProfit = ({ month, finances, callback }) => {
   const [name, setName] = useState('');
   console.log(month);
-  const date = new Date();
 
   const {
     prTypes,
@@ -32,11 +29,18 @@ const MonthProfit = ({ month, finances }) => {
   }
 
   const handleClick = () => {
-    setName('');
-    setPrtypes([...prTypes, name]);
+    if (name.length) {
+      setPrtypes([...prTypes, name]);
+      setName('');
+      localStorage.setItem('prTypes', JSON.stringify([...prTypes, name]));
+    }
   }
 
-  console.log(newTypes);
+  const deleteCategory = (category) => {
+    console.log(prTypes.filter((x) => x !== category), category)
+    setPrtypes(prTypes.filter((x) => x !== category));
+    localStorage.setItem('prTypes', JSON.stringify(prTypes.filter((x) => x !== category)));
+  }
 
   return (
     <div className='month-expenses'>
@@ -48,7 +52,7 @@ const MonthProfit = ({ month, finances }) => {
       {
         newTypes.map((x) => {
           return (
-            <TransactionCard  array={ x } color="green" />
+            <TransactionCard  array={ x } color="green" callback={ callback } finances={ finances } month={ month } isProfit={true} deleteCategory={deleteCategory} />
           )
         })
       }

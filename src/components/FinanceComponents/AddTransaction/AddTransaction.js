@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import pocketContext from '../../../context/pocketContext';
 import InputText from '../../Inputs/InputText/InputText';
 import Checkbox from '../../Inputs/checkbox/Checkbox';
+import svgs from '../../../helpers/svg';
 
 const monthNames = ["January", "February", "March", "April", "May", "June",
   "July", "August", "September", "October", "November", "December"
@@ -40,14 +41,15 @@ const AddTransaction = ({ callback }) => {
     !isProfit ? newFinances.find((x) => x.month === month).expenses.push({
       date,
       value,
-      type,
+      type: type.charAt(0).toUpperCase() + type.slice(1),
       name,
     }) : newFinances.find((x) => x.month === month).profit.push({
       date,
       value,
-      type,
+      type: type.charAt(0).toUpperCase() + type.slice(1),
       name,
     });
+    localStorage.setItem('finances', JSON.stringify(newFinances));
     callback(newFinances);
   }
 
@@ -107,7 +109,10 @@ const AddTransaction = ({ callback }) => {
           </select>
         </label>
       </div>
-        <button onClick={ handleClick } >Add new Transaction</button>
+        <button className='add-btn row' onClick={ handleClick } >
+          <p>Add new Transaction</p>
+          { svgs.plus() }
+        </button>
     </div>
   )
 };

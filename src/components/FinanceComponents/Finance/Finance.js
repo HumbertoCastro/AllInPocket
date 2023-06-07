@@ -18,38 +18,48 @@ const Finance = () => {
 
   const {
     finances,
+    setFinances,
   } = useContext(pocketContext);
 
   const [atualDisplay, setActualDisplay] = useState('expenses')
   const [useMonth, setUseMonth] = useState(month);
-  const [display, setDisplay] = useState(<MonthExpenses finances={ finances } month={ useMonth }/>);
+
+  const callbackChangeFinances = (newFinances, display) => {
+    setUseFinances(newFinances);
+    if (!display) {
+      if (atualDisplay === 'expenses') {
+        setDisplay(<MonthExpenses finances={ useFinances } month={ useMonth } callback={ callbackChangeFinances } />)
+      } else if (atualDisplay === 'profit') {
+        setDisplay(<MonthProfit finances={ useFinances } month={ useMonth } callback={ callbackChangeFinances } />)
+      }
+    } else {
+      if (display === 'expenses') {
+        setDisplay(<MonthExpenses finances={ useFinances } month={ useMonth } callback={ callbackChangeFinances } />)
+      } else if (display === 'profit') {
+        setDisplay(<MonthProfit finances={ useFinances } month={ useMonth } callback={ callbackChangeFinances } />)
+      }
+    }
+  }
+
+  const [display, setDisplay] = useState(<MonthExpenses finances={ finances } month={ useMonth } callback={ callbackChangeFinances } />);
   const [useFinances, setUseFinances] = useState(finances);
 
   const handleSelect = ({ target: { value } }) => {
     setUseMonth(value)
     if (atualDisplay === 'expenses') {
-      setDisplay(<MonthExpenses finances={ useFinances } month={ value }/>)
+      setDisplay(<MonthExpenses finances={ useFinances } month={ value } callback={ callbackChangeFinances } />)
     } else if (atualDisplay === 'profit') {
-      setDisplay(<MonthProfit finances={ useFinances } month={ value }/>)
+      setDisplay(<MonthProfit finances={ useFinances } month={ value } callback={ callbackChangeFinances } />)
     }
   }
 
   const handleSelectTransactions = ({ target: { value }}) => {
     setActualDisplay(value);
     if (value === 'expenses') {
-      setDisplay(<MonthExpenses finances={ useFinances } month={ useMonth }/>)
+      setDisplay(<MonthExpenses finances={ useFinances } month={ useMonth } callback={ callbackChangeFinances } />)
     } else if (value === 'profit') {
-      setDisplay(<MonthProfit finances={ useFinances } month={ useMonth }/>)
+      setDisplay(<MonthProfit finances={ useFinances } month={ useMonth } callback={ callbackChangeFinances } />)
     } 
-  }
-
-  const callbackHandleClick = (newFinances) => {
-    setUseFinances(newFinances);
-    if (atualDisplay === 'expenses') {
-      setDisplay(<MonthExpenses finances={ useFinances } month={ useMonth }/>)
-    } else if (atualDisplay === 'profit') {
-      setDisplay(<MonthProfit finances={ useFinances } month={ useMonth }/>)
-    }
   }
 
   return (
@@ -62,7 +72,7 @@ const Finance = () => {
         }
       </select>
       <OverViewFinance finances={ useFinances } month={ useMonth }/>
-      <AddTransaction callback={ callbackHandleClick }/>
+      <AddTransaction callback={ callbackChangeFinances }/>
       <select className='finance-select colunm' onChange={ handleSelectTransactions }>
         <option> expenses </option>
         <option> profit </option>

@@ -1,6 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import pocketContext from '../../../context/pocketContext';
 
-const OverViewFinance = ({ month, finances }) => {
+const OverViewFinance = ({ month }) => {
+  const {
+    finances,
+  } = useContext(pocketContext);
   const totalExpenses = finances.filter((x) => x.month === month)[0].expenses.map((x) => x.value).reduce((x, sum) => x + sum, 0);
   const totalProfit = finances.filter((x) => x.month === month)[0].profit.map((x) => x.value).reduce((x, sum) => x + sum, 0);
   const total = totalProfit - totalExpenses;

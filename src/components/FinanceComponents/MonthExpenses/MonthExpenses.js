@@ -5,8 +5,10 @@ import pocketContext from '../../../context/pocketContext';
 import InputText from '../../Inputs/InputText/InputText';
 import svgs from '../../../helpers/svg';
 
-const MonthExpenses = ({ month, finances }) => {
+const MonthExpenses = ({ month, finances, callback }) => {
   const [name, setName] = useState('');
+  console.log(month);
+
   const {
     exTypes,
     setExtypes,
@@ -27,13 +29,22 @@ const MonthExpenses = ({ month, finances }) => {
   }
 
   const handleClick = () => {
-    setName('');
-    setExtypes([...exTypes, name]);
+    if (name.length) {
+      setExtypes([...exTypes, name]);
+      setName('');
+      localStorage.setItem('exTypes', JSON.stringify([...exTypes, name]));
+    }
+  }
+
+  const deleteCategory = (category) => {
+    console.log(exTypes.filter((x) => x !== category), category)
+    setExtypes(exTypes.filter((x) => x !== category));
+    localStorage.setItem('exTypes', JSON.stringify(exTypes.filter((x) => x !== category)));
   }
 
   return (
     <div className='month-expenses'>
-      <p>This Month Expenses</p>
+      <p>This Month Profits</p>
       <div className='row'>
         <InputText placename="set new category" callback={ handleChange }/>
         <button onClick={ handleClick }>{ svgs.plus() }</button>
@@ -41,7 +52,7 @@ const MonthExpenses = ({ month, finances }) => {
       {
         newTypes.map((x) => {
           return (
-            <TransactionCard  array={ x } color="red" />
+            <TransactionCard  array={ x } color="red" callback={ callback } finances={ finances } month={ month } isProfit={false} deleteCategory={deleteCategory} />
           )
         })
       }

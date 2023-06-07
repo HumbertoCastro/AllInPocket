@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import pocketContext from './pocketContext';
 import Calendar from '../components/Calendar/Calendar';
@@ -35,14 +35,14 @@ function Provider({ children }) {
   }) : JSON.parse(localStorage.getItem('tasklist'));
   const notesList = localStorage.getItem('notes') ?  JSON.parse(localStorage.getItem('notes')) : []
   const [page, setPage] = useState(<Calendar />);
-  const [exTypes, setExtypes] = useState(types);
-  const [prTypes, setPrtypes] = useState(ptypes);
+  const [exTypes, setExtypes] = useState(localStorage.getItem('exTypes') ? JSON.parse(localStorage.getItem('exTypes')) : types);
+  const [prTypes, setPrtypes] = useState(localStorage.getItem('prTypes') ? JSON.parse(localStorage.getItem('prTypes')) : ptypes);
   const [tasks, setTasks] = useState(weakArray);
   const [interfaceNewTask, openInterface] = useState(false);
   const [nTasks, setNofTasks] = useState(0);
   const [notes, setNotes] = useState(notesList);
   const [pageName, setPageName] = useState('');
-  const [finances, setFinances] = useState(yearFinance);
+  const [finances, setFinances] = useState(localStorage.getItem('finances') ? JSON.parse(localStorage.getItem('finances')) : yearFinance);
 
   const contextValue = {
     prTypes,
