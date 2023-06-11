@@ -9,10 +9,7 @@ body {
 header {
   margin-top: 0;
   margin-bottom: 10px;
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-  height: 8vh;
-  padding-left: 20px;
-  padding-top: 5px;
+  height: 7vh;
 }
 
 .pagename {
@@ -20,7 +17,7 @@ header {
 }
 
 header h1 {
-  margin-left: 20px;
+  margin-left: 10px;
 }
 
 .row {

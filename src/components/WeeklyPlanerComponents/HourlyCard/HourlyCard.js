@@ -31,7 +31,7 @@ const HourlyCard = ({ callback, task }) => {
           backgroundColor: color,
         } : {} }>
         {
-          hasTask ? <TaskInformation task={ task } /> : <p>adicionar tarefa</p>
+          hasTask ? <TaskInformation task={ task } /> : <p>Add task</p>
         }
       </button>
     </div>

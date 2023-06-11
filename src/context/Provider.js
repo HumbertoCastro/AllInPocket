@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import pocketContext from './pocketContext';
 import ReturnMinutes from '../helpers/Minutes';
@@ -41,7 +41,6 @@ function Provider({ children }) {
   const [interfaceNewTask, openInterface] = useState(false);
   const [nTasks, setNofTasks] = useState(0);
   const [notes, setNotes] = useState(notesList);
-  const [pageName, setPageName] = useState('');
   const [finances, setFinances] = useState(localStorage.getItem('finances') ? JSON.parse(localStorage.getItem('finances')) : yearFinance);
 
   const contextValue = {
@@ -51,8 +50,6 @@ function Provider({ children }) {
     setExtypes,
     finances, 
     setFinances,
-    pageName,
-    setPageName,
     notes,
     setNotes,
     page,

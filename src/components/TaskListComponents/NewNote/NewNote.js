@@ -11,7 +11,10 @@ const NewNote = ({ setNewNote, setNote, notes }) => {
   const [color, setColor] = useState('#C212D6');
 
   const handleChange = ({ target: { value, name } }) => {
-    name === "title" ? setTitle(value) : setDescription(value);
+    if (name === "title" && value.length < 15) {
+      console.log(value.length)
+      name === "title" ? setTitle(value) : setDescription(value);
+    }
   }
 
   const handleClick = () => {

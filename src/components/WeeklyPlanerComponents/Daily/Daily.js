@@ -60,9 +60,6 @@ const Daily = () => {
       <input class="cyberpunk-checkbox" type="checkbox" onClick={ ({ target }) => {
         setOnly(!onlyTasks);
       } }/>Show only tasks</label>
-      <button onClick={() => {
-        localStorage.clear();
-      } }>clear localStorage</button>
       {
         renderTheTasks()
       }
