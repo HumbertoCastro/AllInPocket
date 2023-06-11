@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import pocketContext from './pocketContext';
-import Calendar from '../components/Calendar/Calendar';
 import ReturnMinutes from '../helpers/Minutes';
 import yearFinance from '../helpers/mockFinance';
+import Daily from '../components/WeeklyPlanerComponents/Daily/Daily';
 
 const weekday = ["Sun","Mon","Tue","Wed","Thur","Fri","Sat"];
 const types = ['Food', 'Delivery', 'Rent', 'Gym', 'Car insurence', 'Life insurence', 'Cleaning', 'Education', 
@@ -34,7 +34,7 @@ function Provider({ children }) {
     };
   }) : JSON.parse(localStorage.getItem('tasklist'));
   const notesList = localStorage.getItem('notes') ?  JSON.parse(localStorage.getItem('notes')) : []
-  const [page, setPage] = useState(<Calendar />);
+  const [page, setPage] = useState(<Daily />);
   const [exTypes, setExtypes] = useState(localStorage.getItem('exTypes') ? JSON.parse(localStorage.getItem('exTypes')) : types);
   const [prTypes, setPrtypes] = useState(localStorage.getItem('prTypes') ? JSON.parse(localStorage.getItem('prTypes')) : ptypes);
   const [tasks, setTasks] = useState(weakArray);

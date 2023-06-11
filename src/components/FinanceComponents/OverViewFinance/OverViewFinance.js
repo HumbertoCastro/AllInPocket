@@ -11,13 +11,15 @@ const OverViewFinance = ({ month }) => {
 
   return (
     <div className='overview-finance colunm s-evenly'>
-      <div>
-        <p>
-          Your balance
-        </p>
-        <h1 style={ total >= 0 ? { color: "green" } : { color: "red" } }>
-          $ { total }
-        </h1>
+      <div className='sub-finance colunm s-evenly'>
+        <div className='colunm s-evenly'>
+          <p>
+            Your balance
+          </p>
+          <h1 style={ total >= 0 ? { color: "green" } : { color: "red" } } className='overview-total'>
+            $ { total }
+          </h1>
+        </div>
         <div className='row s-btw prof-expen'>
           <p style={ { color: "green" } }>total income +${ totalProfit }</p>
           <p style={ { color: "red" } }>total expenses -${ totalExpenses }</p>

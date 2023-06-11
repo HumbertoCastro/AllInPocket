@@ -71,10 +71,8 @@ const TransactionCard = ({ array, color, finances, callback, isProfit, month, de
   const renderCard = () => (
     <div className='type-div'>
       <div className='tran-btn row s-btw'>
-        <button onClick={ () => setDelete(true) }>
-          {
-            svgs.exit()
-          }
+        <button className='delete-btn' onClick={ () => setDelete(true) }>
+          X
         </button>
         <button className='row s-btw in-btn' onClick={ () => setOpen(!open) }>
           <h1>
@@ -97,27 +95,25 @@ const TransactionCard = ({ array, color, finances, callback, isProfit, month, de
       {
         open ? (
           array[name].map(({ value, name, date }, index) => (
-            <div className='expense-card row s-btw scale-in-left' style={ { borderBottom: `3px solid ${color}` } }>
-              <div className='colunm s-btw'>
+            <div className='expense-card row s-btw scale-in-left'>
+              <div className='colunm delete s-btw'>
                 <h1>
                   {
                     name
                   }
                 </h1>
-                <button onClick={ () => { handleDeleteTransaction(index) } }>
-                  {
-                    svgs.exit()
-                  }
+                <button className='delete-btn' onClick={ () => { handleDeleteTransaction(index) } }>
+                  Remove
                 </button>
               </div>
               <div className='colunm delete s-btw'>
-                <p>
+                <p style={ { color: {color}, fontSize: "1.4rem" } }>
                   $
                   {
-                    value
+                    ` ${value}`
                   }
                 </p>
-                <p>
+                <p className='delete-btn'>
                   {
                     `${monthNumber}/${date > 9 ? date : `0${date}`}`
                   }

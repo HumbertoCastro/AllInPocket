@@ -1,7 +1,7 @@
 .cyberpunk-button {
         background-color: blue;
         color: black;
-        font-size: 18px;
+        font-size: 1rem;
         border: none;
         border-radius: 5px;
         padding: 15px 25px;
@@ -11,14 +11,14 @@
       
       .cyberpunk-checkbox {
         appearance: none;
-        width: 20px;
-        height: 20px;
+        width: 18px;
+        height: 18px;
         border: 2px solid black;
         border-radius: 5px;
         background-color: transparent;
         display: inline-block;
         position: relative;
-        margin-right: 10px;
+        margin-right: 2px;
         cursor: pointer;
       }
       
@@ -30,8 +30,8 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%) scale(0);
-        width: 10px;
-        height: 10px;
+        width: 8px;
+        height: 8px;
         border-radius: 3px;
         transition: all 0.3s ease-in-out;
       }
@@ -41,11 +41,11 @@
       }
       
       .cyberpunk-checkbox-label {
-        font-size: 18px;
+        font-size: 1rem;
         color: black;
         cursor: pointer;
         user-select: none;
         display: flex;
         align-items: center;
-        margin-left: 5vw;
+        margin: 0 2vw;
       }

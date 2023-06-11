@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import HourlyCard from '../HourlyCard/HourlyCard';
 import pocketContext from '../../../context/pocketContext';
 import SetNewTask from '../SetNewTask/SetNewTask';
-import Checkbox from '../../Inputs/checkbox/Checkbox';
 
 const weekday = ["Sun","Mon","Tue","Wed","Thur","Fri","Sat"];
 
@@ -57,7 +56,10 @@ const Daily = () => {
           ))
         }
       </div>
-      <Checkbox onClick={ () => setOnly(!onlyTasks) } />
+      <label class="cyberpunk-checkbox-label">
+      <input class="cyberpunk-checkbox" type="checkbox" onClick={ ({ target }) => {
+        setOnly(!onlyTasks);
+      } }/>Show only tasks</label>
       <button onClick={() => {
         localStorage.clear();
       } }>clear localStorage</button>

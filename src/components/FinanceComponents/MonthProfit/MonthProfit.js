@@ -44,7 +44,6 @@ const MonthProfit = ({ month, finances, callback }) => {
 
   return (
     <div className='month-expenses'>
-      <p>This Month Profits</p>
       <div className='row'>
         <InputText placename="set new category" callback={ handleChange }/>
         <button onClick={ handleClick }>{ svgs.plus() }</button>
