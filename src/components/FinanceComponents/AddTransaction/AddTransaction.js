@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import pocketContext from '../../../context/pocketContext';
 import InputText from '../../Inputs/InputText/InputText';
@@ -11,12 +11,13 @@ const monthNames = ["January", "February", "March", "April", "May", "June",
 
 const days = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31];
 
-const AddTransaction = ({ callback }) => {
+const AddTransaction = ({ callback, useMonth }) => {
+  const dateCode = new Date();
   const [isProfit, setIsProfit] = useState(false);
   const [name, setName] = useState('Transaction');
-  const [month, setMonth] = useState('May');
-  const [type, setType] = useState('food');
-  const [date, setDay] = useState(1);
+  const [month, setMonth] = useState();
+  const [type, setType] = useState(0);
+  const [date, setDay] = useState(days[dateCode.getDay()]);
   const [value, setValue] = useState(0);
 
   const {
@@ -31,26 +32,32 @@ const AddTransaction = ({ callback }) => {
     } else if ( name === "date") {
       setDay(value);
     } else {
-      setType(value);
+      setType(parseInt(value));
     }
   }
 
+  useEffect(() => {
+    setMonth(useMonth);
+  }, [useMonth]);
+
   const handleClick = () => {
     const newFinances = finances;
-    console.log(type)
-    !isProfit ? newFinances.find((x) => x.month === month).expenses.push({
-      date,
-      value,
-      type: type.charAt(0).toUpperCase() + type.slice(1),
-      name,
-    }) : newFinances.find((x) => x.month === month).profit.push({
-      date,
-      value,
-      type: type.charAt(0).toUpperCase() + type.slice(1),
-      name,
-    });
-    localStorage.setItem('finances', JSON.stringify(newFinances));
-    callback(newFinances);
+    console.log(prTypes[type], type);
+    if ((isProfit && prTypes.length !== 0) || (!isProfit && exTypes.length !== 0 )) {
+      !isProfit ? newFinances.find((x) => x.month === month).expenses.push({
+        date,
+        value,
+        type: exTypes.length === 1 ? exTypes[0] : exTypes[type],
+        name,
+      }) : newFinances.find((x) => x.month === month).profit.push({
+        date,
+        value,
+        type: prTypes.length === 1 ? prTypes[0] : prTypes[type],
+        name,
+      });
+      localStorage.setItem('finances', JSON.stringify(newFinances));
+      callback(newFinances);      
+    }
   }
 
   return(
@@ -59,11 +66,11 @@ const AddTransaction = ({ callback }) => {
       <div className='row s-evenly'>
         <Checkbox name="Profit" onClick={ () => {
           setIsProfit(true)
-          setType('Salary');
+          setType(0);
         } } />
         <Checkbox name="Expenses" onClick={ () => {
           setIsProfit(false);
-          setType('Food');
+          setType(0);
         } } />
       </div>
       <div className='row s-evenly'>
@@ -99,11 +106,11 @@ const AddTransaction = ({ callback }) => {
           <select name='type' className='finance-select colunm' onChange={ handleSelect } value={ type }>
             {
               !isProfit ? (
-                exTypes.map((x) => (
-                  <option value={x}>{ x }</option>
+                exTypes.map((x, index) => (
+                  <option value={index}>{ x }</option>
                 ))
-              ) : prTypes.map((x) => (
-                <option value={x}>{ x }</option>
+              ) : prTypes.map((x, index) => (
+                <option value={index}>{ x }</option>
               ))
             }
           </select>

@@ -4,6 +4,7 @@ import svgs from '../../../helpers/svg';
 
 const TransactionCard = ({ array, color, finances, callback, isProfit, month, deleteCategory }) => {
   const [open, setOpen] = useState(false);
+  const [deleteCard, setDelete] = useState(false);
   const date = new Date();
   const monthNumber = date.getMonth() > 9 ? date.getMonth() : `0${date.getMonth()}`;
   const name = Object.keys(array)[0]
@@ -56,10 +57,21 @@ const TransactionCard = ({ array, color, finances, callback, isProfit, month, de
       callback(newF, 'expenses');
     }
   }
-  return (
+
+  const renderDelete = () => (
+    <div className='type-div row'>
+      <p>Do you want to delete this category, and all his transactions ?
+      <button onClick={ () => setDelete(false)}>CANCEL</button>/<button style={ { color: "red" } } onClick={ () => {
+        handleDelete();
+        setDelete(false);
+      } }>DELETE</button></p>
+    </div>
+  )
+
+  const renderCard = () => (
     <div className='type-div'>
       <div className='tran-btn row s-btw'>
-        <button onClick={ handleDelete }>
+        <button onClick={ () => setDelete(true) }>
           {
             svgs.exit()
           }
@@ -115,7 +127,14 @@ const TransactionCard = ({ array, color, finances, callback, isProfit, month, de
           ))
         ) : null
       }
-    </div>
+    </div>)
+
+  return (
+    <>
+    {
+      deleteCard ? renderDelete() : renderCard()
+    }
+    </>
   )
 };
 

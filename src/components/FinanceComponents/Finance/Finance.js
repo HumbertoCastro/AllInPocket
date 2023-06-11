@@ -72,7 +72,7 @@ const Finance = () => {
         }
       </select>
       <OverViewFinance finances={ useFinances } month={ useMonth }/>
-      <AddTransaction callback={ callbackChangeFinances }/>
+      <AddTransaction callback={ callbackChangeFinances } useMonth={ useMonth } />
       <select className='finance-select colunm' onChange={ handleSelectTransactions }>
         <option> expenses </option>
         <option> profit </option>
