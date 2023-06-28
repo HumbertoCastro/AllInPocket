@@ -64,7 +64,7 @@ const AddTransaction = ({ callback, useMonth }) => {
   }
 
   return(
-    <div className='add-finance colunm s-btw'>
+    <div className='add-finance colunm s-btw scale-in-center'>
       <div className='add row s-evenly'>
         <p>Add a transaction</p>
         <Checkbox name="Profit" onClick={ () => {
@@ -89,7 +89,7 @@ const AddTransaction = ({ callback, useMonth }) => {
         <p>Date:</p>
       <label>
           Month
-          <select name='month' className='finance-select colunm' onChange={ handleSelect } value={ month }>
+          <select name='month' className='finance-select-plus colunm' onChange={ handleSelect } value={ month }>
           {
             monthNames.map((x) => (
               <option value={x}>{ x }</option>

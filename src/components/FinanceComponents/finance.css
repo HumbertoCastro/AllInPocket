@@ -68,6 +68,13 @@
   border: none;
 }
 
+.finance-select-plus {
+  width: 25vw;
+  align-self: center;
+  margin: 0px 10px;
+  border: none;
+}
+
 .day {
   width: 10vw;
 }

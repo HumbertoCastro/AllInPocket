@@ -69,7 +69,7 @@ const TransactionCard = ({ array, color, finances, callback, isProfit, month, de
   )
 
   const renderCard = () => (
-    <div className='type-div'>
+    <div className='type-div scale-in-left'>
       <div className='tran-btn row s-btw'>
         <button className='delete-btn' onClick={ () => setDelete(true) }>
           X

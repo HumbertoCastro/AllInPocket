@@ -64,7 +64,7 @@ const Finance = () => {
 
   return (
     <div>
-      <select className='finance-select colunm' onChange={ handleSelect } value={ useMonth }>
+      <select className='finance-select-plus colunm' onChange={ handleSelect } value={ useMonth }>
         {
           monthNames.map((x) => (
             <option value={x}>{ x }</option>

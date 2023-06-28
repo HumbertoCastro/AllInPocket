@@ -10,7 +10,7 @@ const OverViewFinance = ({ month }) => {
   const total = totalProfit - totalExpenses;
 
   return (
-    <div className='overview-finance colunm s-evenly'>
+    <div className='overview-finance colunm s-evenly scale-in-center'>
       <div className='sub-finance colunm s-evenly'>
         <div className='colunm s-evenly'>
           <p>
