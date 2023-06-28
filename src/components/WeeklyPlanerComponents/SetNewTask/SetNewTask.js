@@ -8,7 +8,7 @@ import InputText from '../../Inputs/InputText/InputText';
 const weekday = ["Sun","Mon","Tue","Wed","Thur","Fri","Sat"];
 const Tempos = ['00:30', '01:00', '01:30', '02:00', '02:30', '03:00', '03:30', '04:00'];
 
-const SetNewTask = ({ id:{ id, taskId }, weak }) => {  
+const SetNewTask = ({ id:{ id, taskId }, weak, openInterface }) => {  
   const [title, setTitle] = useState('Task title');
   const [description, setDescription] = useState('Task description');
   const [weakDays, setWeakDays] = useState([]);
@@ -18,7 +18,6 @@ const SetNewTask = ({ id:{ id, taskId }, weak }) => {
   const [rmBtn, setRmBtn] = useState(false);
 
   const {
-    openInterface,
     tasks,
     setTasks,
     setNofTasks,
@@ -108,7 +107,7 @@ const SetNewTask = ({ id:{ id, taskId }, weak }) => {
   }
 
   return(
-    <div className="new-task colunm s-evenly">
+    <div className="new-task colunm s-evenly scale-in-ver-top ">
       <button className='x-btn' onClick={() => {
         openInterface(false);
       }}>
