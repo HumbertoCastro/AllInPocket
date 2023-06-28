@@ -18,8 +18,8 @@ function Provider({ children }) {
         hasTask: false,
         overlap: false,
         task: {
-          title: 'titulo',
-          description: 'description',
+          title: 'Task Title',
+          description: 'Task description',
         },
         id: index,
         weak: day,

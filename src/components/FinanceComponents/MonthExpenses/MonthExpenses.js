@@ -44,7 +44,7 @@ const MonthExpenses = ({ month, finances, callback }) => {
     <div className='month-expenses'>
       <div className='row'>
         <InputText placename="set new category" callback={ handleChange }/>
-        <button onClick={ handleClick }>{ svgs.plus() }</button>
+        <button className='add-finance-btn' onClick={ handleClick }>{ svgs.plus() }</button>
       </div>
       {
         newTypes.sort((a,b) => {

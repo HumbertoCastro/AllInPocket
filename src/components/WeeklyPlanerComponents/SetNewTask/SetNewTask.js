@@ -8,14 +8,14 @@ import InputText from '../../Inputs/InputText/InputText';
 const weekday = ["Sun","Mon","Tue","Wed","Thur","Fri","Sat"];
 const Tempos = ['00:30', '01:00', '01:30', '02:00', '02:30', '03:00', '03:30', '04:00'];
 
-const SetNewTask = ({ id, weak }) => {  
-  const [title, setTitle] = useState('titulo');
-  const [description, setDescription] = useState('Description');
+const SetNewTask = ({ id:{ id, taskId }, weak }) => {  
+  const [title, setTitle] = useState('Task title');
+  const [description, setDescription] = useState('Task description');
   const [weakDays, setWeakDays] = useState([]);
-  const [thisTaskId, setThisTaskId] = useState(0);
   const [onlyOnce, setOnlyOnce] = useState(false);
   const [duration, setDuration] = useState(1);
   const [color, setColor] = useState('#00000');
+  const [rmBtn, setRmBtn] = useState(false);
 
   const {
     openInterface,
@@ -26,14 +26,15 @@ const SetNewTask = ({ id, weak }) => {
   } = useContext(pocketContext);
 
   useEffect(() => {
+    console.log(tasks);
     const currentTask = tasks.filter((weakDay) => weakDay.weak === weak)[0].cardArray.find((x) => x.id === id);
     setWeakDays([weak]);
-    setThisTaskId(currentTask.taskId);
     setTitle(currentTask.task.title);
     setDescription(currentTask.task.description);
     if ( currentTask.taskId !== 0) {
       const weaksThatRepet = tasks.filter(({ cardArray }) => cardArray.some((x) => x.taskId === currentTask.taskId)).map((y) => y.weak);
       setWeakDays(weaksThatRepet);
+      setRmBtn(true);
     }
     const newTaskObject = document.querySelector(".new-task");
     newTaskObject.style.top = document.documentElement.scrollTop + 'px';
@@ -45,6 +46,23 @@ const SetNewTask = ({ id, weak }) => {
 
   const handleWeakClick = ({ target: { name, className } }) => {
     weakDays.some((x) => x === name) ? setWeakDays(weakDays.filter((y) => y !== name)) : setWeakDays([...weakDays, name]);
+  }
+
+  const handleDelete = () => {
+    const filter = tasks;
+    for (let i = 0; i < filter.length; i += 1) {
+      filter[i].cardArray.forEach((x) => {
+        if (x.taskId === taskId) {
+          x.hasTask = false;
+          x.taskId = 0;
+          x.color = 'teste';
+          setNofTasks(nTasks - 1);
+        }
+      })
+    }
+    setTasks(filter);
+    openInterface(false);
+    localStorage.setItem('tasklist', JSON.stringify(filter));
   }
 
   const handleClick = () => {
@@ -98,8 +116,8 @@ const SetNewTask = ({ id, weak }) => {
           svgs.exit()
         }
       </button>
-      <InputText name="title" callback={ handleChange } placename="Task Title" />
-      <InputText name="description" callback={ handleChange } placename="Task Description" />
+      <InputText name="title" callback={ handleChange } placename={ title } />
+      <InputText name="description" callback={ handleChange } placename={ description } />
       {
         onlyOnce ? null :
         <div>
@@ -134,11 +152,18 @@ const SetNewTask = ({ id, weak }) => {
       <label className='colunm s-evenly'>Choose the color for the task
        <ColorsSelect selectedColor={ color } callback={ setColor }/>
       </label>
-      <button onClick={ handleClick }>
-        <p>
-          Create New Task
-        </p>
-      </button>
+      <div className='row s-evenly'>
+        <button onClick={ handleClick }>
+          <p>
+            {
+              rmBtn ? 'Update existing task' : 'Create new Task'
+            }
+          </p>
+        </button>
+        {
+          rmBtn ? <button onClick={handleDelete} style={ {color: 'red'} }>Remove Existing task</button> : null
+        }
+      </div>
     </div>
   )
 };

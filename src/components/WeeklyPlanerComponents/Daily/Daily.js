@@ -1,26 +1,28 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import HourlyCard from '../HourlyCard/HourlyCard';
 import pocketContext from '../../../context/pocketContext';
 import SetNewTask from '../SetNewTask/SetNewTask';
+import '../weekly.css'
 
 const weekday = ["Sun","Mon","Tue","Wed","Thur","Fri","Sat"];
 
 
 const Daily = () => {
+  const {
+    openInterface,
+    interfaceNewTask,
+    tasks,
+  } = useContext(pocketContext);
+
   const [taskId, setTaskId] = useState(0);
   const [taskWeak, setTaskWeak] = useState("");
   const [selected, setSelected] = useState("Sun");
   const [onlyTasks, setOnly] = useState(false);
-  const {
-    tasks,
-    setTasks,
-    openInterface,
-    interfaceNewTask,
-  } = useContext(pocketContext);
 
-  const addTask = (id, weak) => {
-    setTaskId(id);
+
+  const addTask = (id, weak, taskId) => {
+    setTaskId({ id, taskId });
     setTaskWeak(weak);
     openInterface(true);
   }
@@ -38,7 +40,7 @@ const Daily = () => {
       return tasksToRender;
     } return (<h1 className='no-task'>No tasks to be displayed</h1>)
   }
-  
+
   return(
     <div className="colunm s-evenly">
       <div className='row s-evenly'>

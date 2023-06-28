@@ -18,6 +18,10 @@
   width: 80%;
 }
 
+.add-finance-btn {
+  height: 0px;
+}
+
 .overview-finance div p {
   margin: 0px;
   font-size: 3vw;

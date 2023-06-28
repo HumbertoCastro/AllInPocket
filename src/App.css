@@ -86,36 +86,12 @@ svg {
   bottom: 0;
 }
 
-.time-card {
-  height: 10vh;
-  border-radius: 20px;
-  border-radius: 21px;
-  background: #ffffff;
-  box-shadow:  9px 9px 18px #e0e0e0, -9px -9px 18px #ffffff;
-  margin-bottom: 10px;
-  width: 90vw;
-}
-
 .s-center {
   align-self: center;
 }
 
-.new-task {
-  position: absolute;
-  left: 0; 
-  right: 0; 
-  margin-left: auto; 
-  margin-right: auto; 
-  width: 95vw;
-  height: 80vh;
-  background-color: white;
-  z-index: 2;
-  border: 2px solid black;
-  text-align: center;
-}
-
-.card-div {
-  margin-top: 10px;
+.times {
+  align-self: center;
 }
 
 .selected {
@@ -132,11 +108,6 @@ select {
   border: 0px 0px solid black;
 }
 
-.colors-div {
-  align-self: center;
-  width: 70vw;
-}
-
 .color-button {
   width: 7vw;
   height: 7vw;
@@ -149,71 +120,9 @@ select {
   transform: scale(1.2);
 }
 
-.no-task {
-  width: 90vw;
-  height: 70vh;
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  align-self: center;
-  color: #F0F0F0;
-}
-
-.note {
-  width: 28vw;
-  height: 16vh;
-  color: white;
-  border-radius: 20px;
-  margin: 10px;
-}
-
-.note h1 {
-  font-size: 1em;
-}
-
-.note-only-btn {
-  width: 100vw;
-  height: 80vh;
-  align-self: center;
-  font-size: 2rem;
-}
-
 .note-only-btn svg {
   width: 12vw;
   height: 12vw;
-}
-
-.new-note {
-  margin: auto;
-  width: 95vw;
-  height: 80vh;
-  align-items: center;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-}
-
-.note-btn {
-  width: 30vw;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-  border-radius: 10px;
-  align-self: center;
-  margin: auto;
-  align-items: center;
-}
-
-.block-note {
-  margin: auto;
-  width: 95vw;
-  height: 85vh;
-  align-items: center;
-}
-
-textarea {
-  width: 80vw;
-  height: 80vh;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-  outline: none;
-  resize: none;
 }
 
 select {

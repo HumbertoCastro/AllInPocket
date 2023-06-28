@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import svgs from '../../../helpers/svg';
+import '../task.css'
 
 
 const BlockOfNotes = ({ id, notes, setNotes, setShow }) => {
@@ -16,7 +17,7 @@ const BlockOfNotes = ({ id, notes, setNotes, setShow }) => {
     <div className='block-note colunm'>
       <textarea onChange={ handleChange } value={ text } placeholder='Write your notes here'>
       </textarea>
-      <div className='row'>
+      <div className='row blocks'>
         <button onClick={ () => { 
           console.log('d')
           setShow(false)

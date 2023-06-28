@@ -1,0 +1,60 @@
+.note {
+  width: 31vw;
+  height: 16vh;
+  color: white;
+  border-radius: 20px;
+  margin: 10px 2px;
+}
+
+.note h1 {
+  font-size: 1em;
+}
+
+.note-only-btn {
+  width: 100vw;
+  height: 80vh;
+  align-self: center;
+  font-size: 2rem;
+}
+
+.add-task {
+  margin-right: 7vw;
+}
+
+
+.new-note {
+  margin: auto;
+  width: 95vw;
+  height: 80vh;
+  align-items: center;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+.note-btn {
+  width: 30vw;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  border-radius: 10px;
+  align-self: center;
+  margin: auto;
+  align-items: center;
+}
+
+.block-note {
+  margin: auto;
+  width: 95vw;
+  height: 85vh;
+  align-items: center;
+}
+
+textarea {
+  width: 80vw;
+  height: 80vh;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  outline: none;
+  resize: none;
+}
+
+.blocks {
+  width: 97vw;
+  margin: auto;
+}

@@ -1,16 +1,18 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 
-const TaskInformation = ({ task: { task } }) => {
+const TaskInformation = ({ task: { task }, id }) => {
   const {
     title,
     description,
   } = task;
+
   return(
-    <div className="colunm s-evenly">
-      <h1>{ title }</h1>
-      <p>{ description }</p>
+    <div className="row s-evenly task-inf">
+      <div className='colunm task-inf'>
+        <h1>{ title }</h1>
+        <p>{ description }</p>
+      </div>
     </div>
   )
 };

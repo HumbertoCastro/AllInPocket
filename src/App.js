@@ -4,23 +4,28 @@ import { useContext } from 'react';
 import Header from './components/HeaderComponents/Header/Header'
 import pocketContext from './context/pocketContext';
 import Nav from './components/HeaderComponents/Nav/Nav'
+import Login from './components/LoginComponents/Login/Login';
 
 function App() {
   const {
     page
   } = useContext(pocketContext);
 
-  const setMainContent = () =>{
-
-  }
-
-  return (
-    <div className="App">
+  const MainContent = () => (
+    <>
       <Header />
       {
         page
       }
       <Nav />
+    </>
+  )
+
+  return (
+    <div className="App">
+      {
+        !true ? <Login /> : (MainContent())
+      }
     </div>
   );
 }

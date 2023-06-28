@@ -23,7 +23,7 @@ const TaskList = () => {
             svgs.note()
           }
         </button>
-        <div className='row'>
+        <div className='row s-btw'>
           {
             notes.map(({ title, description, color, id }) => (
               <button style={ { backgroundColor: color } } className="note slit-in-vertical" onClick={ () => {
@@ -40,7 +40,7 @@ const TaskList = () => {
   )
 
   return(
-    <div className='row'>
+    <div className='row blocks'>
       {
         showNote ? <BlockOfNotes id={ id } notes={ notes } setNotes={setNotes} setShow={ setShow } /> :
         ( !newNote ? renderTasks() : <NewNote setNewNote={ setNewNote } setNote={ setNotes } notes={ notes } />)
