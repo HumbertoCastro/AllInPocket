@@ -43,8 +43,10 @@ const NewNote = ({ setNewNote, setNote, notes }) => {
       <label className='colunm s-evenly'>Choose the color for the task
        <ColorsSelect selectedColor={ color } callback={ setColor }/>
       </label>
-      <button onClick={ handleClick }>
-        Add new note
+      <button onClick={ handleClick } className='string-btn'>
+        Add new Note {
+          svgs.plusNote()
+        }
       </button>
     </div>
   )

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState, useSyncExternalStore } from 'react';
 import PropTypes from 'prop-types';
 import pocketContext from '../../../context/pocketContext';
 import InputText from '../../Inputs/InputText/InputText';
@@ -20,6 +20,8 @@ const AddTransaction = ({ callback, useMonth }) => {
   const [type, setType] = useState(0);
   const [date, setDay] = useState(days[dateCode.getDate()]);
   const [value, setValue] = useState(0);
+  const [svg, setSvg] = useState(svgs.plus());
+  const [empty, setEmpty] = useState(false);
 
   const {
     finances,
@@ -118,10 +120,24 @@ const AddTransaction = ({ callback, useMonth }) => {
           }
         </select>
       </div>
-        <button className='add-btn row' onClick={ handleClick } >
+        <button className='string-btn add-btn row' onClick={ () => {
+          if (value > 0) {
+            setTimeout(() => {
+              setSvg(svgs.plus());
+            }, 1000);
+            setSvg(svgs.checkmark());
+            handleClick();
+            setEmpty(false);
+          } else {
+            setEmpty(true);
+          }
+        } } >
           <p>Add new Transaction</p>
-          { svgs.plus() }
+          { svg }
         </button>
+        {
+          empty ? <p className='scale-in-center' style={ { color: 'red' } }>Please provide a Value for the transaction</p> : null
+        }
     </div>
   )
 };
