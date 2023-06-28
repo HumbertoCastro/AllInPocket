@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
 import pocketContext from '../../../context/pocketContext';
 import svgs from '../../../helpers/svg';
 import Checkbox from '../../Inputs/checkbox/Checkbox';
@@ -30,6 +29,8 @@ const SetNewTask = ({ id:{ id, taskId }, weak, openInterface }) => {
     setWeakDays([weak]);
     setTitle(currentTask.task.title);
     setDescription(currentTask.task.description);
+    setColor(currentTask.color);
+    console.log(currentTask);
     if ( currentTask.taskId !== 0) {
       const weaksThatRepet = tasks.filter(({ cardArray }) => cardArray.some((x) => x.taskId === currentTask.taskId)).map((y) => y.weak);
       setWeakDays(weaksThatRepet);
@@ -48,6 +49,13 @@ const SetNewTask = ({ id:{ id, taskId }, weak, openInterface }) => {
   }
 
   const handleDelete = () => {
+    tasks.filter(({ cardArray }) => {
+      for (let i = id + 1; i < parseInt(cardArray[id].task.duration) + id; i += 1) {
+        cardArray[i].overlap = false;
+        cardArray[i].task.duration = '0';
+      }
+      return cardArray;
+    });
     const filter = tasks;
     for (let i = 0; i < filter.length; i += 1) {
       filter[i].cardArray.forEach((x) => {
