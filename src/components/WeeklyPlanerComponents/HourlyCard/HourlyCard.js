@@ -11,7 +11,7 @@ const HourlyCard = ({ task }) => {
   const minutos = time.slice(3, 5);
 
   const renderTask = () => (
-    <div className="row time-card slide-in-fwd-center" style={ hasTask ? 
+    <div className="row time-card scale-in-center" style={ hasTask ? 
       { 
         height: duration * 12 + 'vh',
         backgroundColor: color,

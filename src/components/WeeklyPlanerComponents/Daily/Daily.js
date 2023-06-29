@@ -38,7 +38,7 @@ const Daily = () => {
           weekday.map((day) => (
             <button
               name={ day }
-              className={ selected === day ? "selected s-scale" : null }
+              className={ selected === day ? "selected s-scale days scale-in-center" : "days scale-in-center" }
               onClick={ handleClick }
             >
               {

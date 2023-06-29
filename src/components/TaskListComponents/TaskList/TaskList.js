@@ -40,7 +40,7 @@ const TaskList = () => {
   )
 
   return(
-    <div className='row blocks'>
+    <div className='row blocks scale-in-center'>
       {
         showNote ? <BlockOfNotes id={ id } notes={ notes } setNotes={setNotes} setShow={ setShow } /> :
         ( !newNote ? renderTasks() : <NewNote setNewNote={ setNewNote } setNote={ setNotes } notes={ notes } />)
