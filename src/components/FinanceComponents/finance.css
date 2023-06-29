@@ -68,6 +68,10 @@
   border: none;
 }
 
+.finance-div {
+  margin-top: 15px;
+}
+
 .finance-select-plus {
   width: 25vw;
   align-self: center;

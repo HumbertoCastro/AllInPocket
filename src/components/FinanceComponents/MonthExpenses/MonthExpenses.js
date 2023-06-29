@@ -11,6 +11,7 @@ const MonthExpenses = ({ month, finances, callback }) => {
   const {
     exTypes,
     setExtypes,
+    theme,
   } = useContext(pocketContext);
 
   const newTypes = exTypes.map((tipo) => {
@@ -41,10 +42,10 @@ const MonthExpenses = ({ month, finances, callback }) => {
   }
 
   return (
-    <div className='month-expenses'>
+    <div className='month-expenses' >
       <div className='row'>
         <InputText placename="set new category" callback={ handleChange }/>
-        <button className='add-finance-btn' onClick={ handleClick }>{ svgs.plus() }</button>
+        <button className='add-finance-btn' onClick={ handleClick } style={ { backgroundColor: theme.backgroundColor, color: theme.textColor }}>{ svgs.plus() }</button>
       </div>
       {
         newTypes.sort((a,b) => {

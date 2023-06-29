@@ -12,12 +12,14 @@ const TaskList = () => {
   const [id, setId] = useState(0);
   const {
     notes,
-    setNotes
+    setNotes,
+    theme,
   } = useContext(pocketContext);
 
   const renderTasks = () => (
     <div className='colunm' style={ { width: '100vw' }}>
-        <button className='note-btn row s-evenly' onClick={() => { setNewNote(!newNote) }}>
+        <button className='note-btn row s-evenly' onClick={() => { setNewNote(!newNote) }}
+        style={ { backgroundColor: theme.primaryColor, color: theme.textColor }}>
         add note
           {
             svgs.note()

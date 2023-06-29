@@ -21,6 +21,7 @@ const SetNewTask = ({ id:{ id, taskId }, weak, openInterface }) => {
     setTasks,
     setNofTasks,
     nTasks,
+    theme,
   } = useContext(pocketContext);
 
   useEffect(() => {
@@ -115,10 +116,11 @@ const SetNewTask = ({ id:{ id, taskId }, weak, openInterface }) => {
   }
 
   return(
-    <div className="new-task colunm s-evenly scale-in-ver-top ">
+    <div className="new-task colunm s-evenly scale-in-ver-top " style={ {
+      backgroundColor: theme.primaryColor, color: theme.textColor, boxShadow: theme.boxShadow }}>
       <button className='x-btn' onClick={() => {
         openInterface(false);
-      }}>
+      }} style={ { backgroundColor: theme.primaryColor, color: theme.textColor }}>
         {
           svgs.exit()
         }
@@ -135,6 +137,7 @@ const SetNewTask = ({ id:{ id, taskId }, weak, openInterface }) => {
                 <button
                   name={ x }
                   className={ weakDays.some((dayname) => dayname === x) ? "selected weak-day s-scale" : "weak-day"}
+                  style={ { backgroundColor: theme.backgroundColor, color: theme.textColor }}
                   onClick={ handleWeakClick }>
                   {
                     x
@@ -148,7 +151,7 @@ const SetNewTask = ({ id:{ id, taskId }, weak, openInterface }) => {
       <Checkbox onClick={ () => setOnlyOnce(!onlyOnce) } name="Show only tasks" />
       <select onChange={({ target: { value } }) => {
           setDuration(value);
-        }}>
+        }} style={ { backgroundColor: theme.primaryColor, color: theme.textColor }}>
         <option value="1">How long will it last</option>
             {
               Tempos.map((x, index) => (
@@ -160,7 +163,7 @@ const SetNewTask = ({ id:{ id, taskId }, weak, openInterface }) => {
        <ColorsSelect selectedColor={ color } callback={ setColor }/>
       </label>
       <div className='row s-evenly'>
-        <button onClick={ handleClick }>
+        <button onClick={ handleClick } style={ { backgroundColor: theme.primaryColor, color: theme.textColor }}>
           <p>
             {
               rmBtn ? 'Update existing task' : 'Create new Task'

@@ -27,6 +27,7 @@ const AddTransaction = ({ callback, useMonth }) => {
     finances,
     exTypes,
     prTypes,
+    theme,
   } = useContext(pocketContext);
 
   const handleSelect = ({ target: { value, name } }) => {
@@ -64,7 +65,7 @@ const AddTransaction = ({ callback, useMonth }) => {
   }
 
   return(
-    <div className='add-finance colunm s-btw scale-in-center'>
+    <div className='add-finance colunm s-btw scale-in-center' style={ { backgroundColor: theme.primaryColor, color: theme.textColor }}>
       <div className='add row s-evenly'>
         <p>Add a transaction</p>
         <Checkbox name="Profit" onClick={ () => {
@@ -89,7 +90,8 @@ const AddTransaction = ({ callback, useMonth }) => {
         <p>Date:</p>
       <label>
           Month
-          <select name='month' className='finance-select-plus colunm' onChange={ handleSelect } value={ month }>
+          <select name='month' className='finance-select-plus colunm' onChange={ handleSelect } value={ month }
+          style={ { backgroundColor: theme.primaryColor, color: theme.textColor }}>
           {
             monthNames.map((x) => (
               <option value={x}>{ x }</option>
@@ -99,7 +101,8 @@ const AddTransaction = ({ callback, useMonth }) => {
         </label>
         <label>
           Day
-          <select name='date' className='finance-select colunm day' onChange={ handleSelect } value={ date }>
+          <select name='date' className='finance-select colunm day' onChange={ handleSelect } value={ date }
+          style={ { backgroundColor: theme.primaryColor, color: theme.textColor }}>
           {
             days.map((x) => (<option value={x}>{ x }</option>))
           }
@@ -108,7 +111,8 @@ const AddTransaction = ({ callback, useMonth }) => {
       </div>
       <div className='add row'>
         <p>Type: </p>
-        <select name='type' className='finance-select colunm type' onChange={ handleSelect } value={ type }>
+        <select name='type' className='finance-select colunm type' onChange={ handleSelect } value={ type }
+        style={ { backgroundColor: theme.primaryColor, color: theme.textColor }}>
           {
             !isProfit ? (
               exTypes.map((x, index) => (
@@ -131,7 +135,7 @@ const AddTransaction = ({ callback, useMonth }) => {
           } else {
             setEmpty(true);
           }
-        } } >
+        } } style={ { backgroundColor: theme.primaryColor, color: theme.textColor }}>
           <p>Add new Transaction</p>
           { svg }
         </button>

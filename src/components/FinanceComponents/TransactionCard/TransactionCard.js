@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import svgs from '../../../helpers/svg';
+import pocketContext from '../../../context/pocketContext';
 
 
 const TransactionCard = ({ array, color, finances, callback, isProfit, month, deleteCategory }) => {
@@ -10,6 +11,10 @@ const TransactionCard = ({ array, color, finances, callback, isProfit, month, de
   const name = Object.keys(array)[0]
   const total = array[name].map((x) => x.value).reduce((x, count) => x + count, 0);
   const indexMonth = finances.indexOf(finances.find((x) => x.month === month));
+
+  const {
+    theme,
+  } = useContext(pocketContext);
 
   const handleDelete = () => {
     const newFinances = finances;
@@ -69,12 +74,12 @@ const TransactionCard = ({ array, color, finances, callback, isProfit, month, de
   )
 
   const renderCard = () => (
-    <div className='type-div scale-in-left'>
+    <div className='type-div scale-in-left' style={ { backgroundColor: theme.primaryColor, color: theme.textColor }}>
       <div className='tran-btn row s-btw'>
-        <button className='delete-btn' onClick={ () => setDelete(true) }>
+        <button className='delete-btn' onClick={ () => setDelete(true) } style={ { backgroundColor: theme.primaryColor, color: theme.textColor }}>
           X
         </button>
-        <button className='row s-btw in-btn' onClick={ () => setOpen(!open) }>
+        <button className='row s-btw in-btn' onClick={ () => setOpen(!open) } style={ { backgroundColor: theme.primaryColor, color: theme.textColor }}>
           <h1>
             {
               name
@@ -102,7 +107,8 @@ const TransactionCard = ({ array, color, finances, callback, isProfit, month, de
                     name
                   }
                 </h1>
-                <button className='delete-btn' onClick={ () => { handleDeleteTransaction(index) } }>
+                <button className='delete-btn' onClick={ () => { handleDeleteTransaction(index) } } 
+                  style={ { backgroundColor: theme.primaryColor, color: theme.textColor }}>
                   Remove
                 </button>
               </div>

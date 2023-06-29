@@ -18,7 +18,7 @@ const Finance = () => {
 
   const {
     finances,
-    setFinances,
+    theme,
   } = useContext(pocketContext);
 
   const [atualDisplay, setActualDisplay] = useState('expenses')
@@ -63,8 +63,9 @@ const Finance = () => {
   }
 
   return (
-    <div>
-      <select className='finance-select-plus colunm' onChange={ handleSelect } value={ useMonth }>
+    <div className='finance-div'>
+      <select className='finance-select-plus colunm' onChange={ handleSelect } value={ useMonth }
+      style={ { backgroundColor: theme.backgroundColor, color: theme.textColor }}>
         {
           monthNames.map((x) => (
             <option value={x}>{ x }</option>
@@ -73,10 +74,13 @@ const Finance = () => {
       </select>
       <OverViewFinance finances={ useFinances } month={ useMonth }/>
       <AddTransaction callback={ callbackChangeFinances } useMonth={ useMonth } />
-      <p className='select-p row'>This month <select className='colunm' onChange={ handleSelectTransactions }>
-        <option> expenses </option>
-        <option> profit </option>
-      </select></p>
+      <p className='select-p row' style={ { backgroundColor: theme.backgroundColor, color: theme.textColor }}>
+        This month
+        <select className='colunm' onChange={ handleSelectTransactions } style={ { backgroundColor: theme.backgroundColor, color: theme.textColor }}>
+          <option> expenses </option>
+          <option> profit </option>
+        </select>
+      </p>
       {
         display
       }

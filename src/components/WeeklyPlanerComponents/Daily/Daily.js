@@ -1,8 +1,6 @@
-import React, { useContext, useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
+import React, { useContext, useState } from 'react';
 import HourlyCard from '../HourlyCard/HourlyCard';
 import pocketContext from '../../../context/pocketContext';
-import SetNewTask from '../SetNewTask/SetNewTask';
 import '../weekly.css'
 
 const weekday = ["Sun","Mon","Tue","Wed","Thur","Fri","Sat"];
@@ -10,8 +8,8 @@ const weekday = ["Sun","Mon","Tue","Wed","Thur","Fri","Sat"];
 
 const Daily = () => {
   const {
-    openInterface,
     tasks,
+    theme,
   } = useContext(pocketContext);
 
   const [selected, setSelected] = useState("Sun");
@@ -40,6 +38,7 @@ const Daily = () => {
               name={ day }
               className={ selected === day ? "selected s-scale days scale-in-center" : "days scale-in-center" }
               onClick={ handleClick }
+              style={ { backgroundColor: theme.backgroundColor, color: theme.textColor } }
             >
               {
                 day
@@ -48,10 +47,10 @@ const Daily = () => {
           ))
         }
       </div>
-      <label class="cyberpunk-checkbox-label only-task">
+      <label class="cyberpunk-checkbox-label only-task" style={ { backgroundColor: theme.backgroundColor, color: theme.textColor } }>
       <input class="cyberpunk-checkbox" type="checkbox" onClick={ ({ target }) => {
         setOnly(!onlyTasks);
-      } }/>Show only tasks</label>
+      } } style={ { backgroundColor: theme.backgroundColor, color: theme.textColor } }/>Show only tasks</label>
       {
         renderTheTasks()
       }

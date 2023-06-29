@@ -8,7 +8,8 @@ import Login from './components/LoginComponents/Login/Login';
 
 function App() {
   const {
-    page
+    page,
+    theme,
   } = useContext(pocketContext);
 
   const MainContent = () => (
@@ -22,7 +23,7 @@ function App() {
   )
 
   return (
-    <div className="App">
+    <div className="App" style={ { backgroundColor: theme.backgroundColor } }>
       {
         !true ? <Login /> : (MainContent())
       }

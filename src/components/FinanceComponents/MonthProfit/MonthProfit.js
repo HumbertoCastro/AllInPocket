@@ -12,6 +12,7 @@ const MonthProfit = ({ month, finances, callback }) => {
   const {
     prTypes,
     setPrtypes,
+    theme,
   } = useContext(pocketContext);
 
   const newTypes = prTypes.map((tipo) => {
@@ -46,7 +47,7 @@ const MonthProfit = ({ month, finances, callback }) => {
     <div className='month-expenses'>
       <div className='row'>
         <InputText placename="set new category" callback={ handleChange }/>
-        <button onClick={ handleClick }>{ svgs.plus() }</button>
+        <button onClick={ handleClick } style={ { backgroundColor: theme.backgroundColor, color: theme.textColor }}>{ svgs.plus() }</button>
       </div>
       {
         newTypes.map((x) => {

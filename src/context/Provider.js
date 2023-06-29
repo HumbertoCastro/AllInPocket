@@ -10,6 +10,21 @@ const types = ['Food', 'Delivery', 'Rent', 'Gym', 'Car insurence', 'Life insuren
 'Light', 'Water', 'Gas', 'Internet', 'Restaurants', 'Drug store', 'Self care', 'Medic', 'Dentist', 'Car', 'Travel', 'Present', 'Cloats'];
 const ptypes = ['Salary' , 'Investiments', 'Sales', 'Others'];
 
+const themes = {
+  light: {
+    backgroundColor: '#fff',
+    textColor: '#000',
+    primaryColor: '#fff',
+    boxShadow: '0px 2px 2px 0px hsla(0,0%,0%,0.14), 0px 3px 1px -2px hsla(0,0%,0%,0.12), 0px 1px 5px 0px hsla(0,0%,0%,0.2);'
+  },
+  dark: {
+    backgroundColor: '#121212',
+    textColor: '#fff',
+    primaryColor: '#1F1B24',
+    boxShadow: '0px 2px 2px 0px white, 0px 3px 1px -2px hsla(0,0%,0%,0.12), 0px 1px 5px 0px hsla(0,0%,0%,0.2);'
+  },
+};
+
 function Provider({ children }) {
   const weakArray = !localStorage.getItem('tasklist') ? weekday.map((day) => {
     const cardArray = ReturnMinutes.map((x, index) => {
@@ -42,6 +57,12 @@ function Provider({ children }) {
   const [nTasks, setNofTasks] = useState(0);
   const [notes, setNotes] = useState(notesList);
   const [finances, setFinances] = useState(localStorage.getItem('finances') ? JSON.parse(localStorage.getItem('finances')) : yearFinance);
+  const [theme, setTheme] = useState(themes.light);
+
+  const toggleTheme = () => {
+    setTheme(theme === themes.light ? themes.dark : themes.light);
+  };
+
 
   const contextValue = {
     prTypes,
@@ -59,7 +80,10 @@ function Provider({ children }) {
     interfaceNewTask,
     openInterface,
     nTasks,
-    setNofTasks
+    setNofTasks,
+    theme,
+    setTheme,
+    toggleTheme,
   };
 
   return (

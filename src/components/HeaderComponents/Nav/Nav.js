@@ -2,15 +2,14 @@ import React, { useContext } from 'react';
 import svgs from '../../../helpers/svg';
 import ButtonIcon from '../../Inputs/Button-icon/Button-icon';
 import pocketContext from '../../../context/pocketContext';
-import Calendar from '../../Calendar/Calendar';
 import Daily from '../../WeeklyPlanerComponents/Daily/Daily';
 import TaskList from '../../TaskListComponents/TaskList/TaskList';
 import Finance from '../../FinanceComponents/Finance/Finance';
-import Email from '../../Email/Email'
 
 const Nav = () => {
   const {
     setPage,
+    theme,
   } = useContext(pocketContext);
 
   const onClick = (pageName) => {
@@ -18,7 +17,7 @@ const Nav = () => {
   }
 
   return(
-  <div className="row s-btw nav">
+  <div className="row s-btw nav" style={ { backgroundColor: theme.backgroundColor  } }>
     {
     // <ButtonIcon iconSvg={ svgs.calendar } callback={ () => {onClick(<Calendar />)} } id="1" name="Calendar" />
     }

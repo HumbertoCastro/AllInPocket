@@ -1,10 +1,14 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import TaskInformation from '../TaskInformation/TaskInformation';
 import SetNewTask from '../SetNewTask/SetNewTask';
+import pocketContext from '../../../context/pocketContext';
 
 
 const HourlyCard = ({ task }) => {
   const [openInterface, setOpen] = useState(false);
+  const {
+    theme,
+  } = useContext(pocketContext);
   const { time, hasTask, id, weak, color, taskId } = task;
   const duration = task.task.duration ? task.task.duration : 1;
   const hour = time.slice(0, 2);
@@ -14,12 +18,18 @@ const HourlyCard = ({ task }) => {
     <div className="row time-card scale-in-center" style={ hasTask ? 
       { 
         height: duration * 12 + 'vh',
-        backgroundColor: color,
-      } : {} }>
+        backgroundColor: theme.primaryColor,
+      } : {
+        backgroundColor: theme.primaryColor,
+      } }>
       <button className='row s-btw' onClick={ () => setOpen(true) } style={ hasTask ? 
         {
           backgroundColor: color,
-        } : {} }>
+          color: theme.textColor,
+        } : {
+          backgroundColor: theme.primaryColor,
+          color: theme.textColor,
+        } }>
         <div className="colunm s-center times">
           <p className='i-b n-margin'>
             {

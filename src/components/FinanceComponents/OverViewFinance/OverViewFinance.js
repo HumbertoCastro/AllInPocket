@@ -4,13 +4,14 @@ import pocketContext from '../../../context/pocketContext';
 const OverViewFinance = ({ month }) => {
   const {
     finances,
+    theme,
   } = useContext(pocketContext);
   const totalExpenses = finances.filter((x) => x.month === month)[0].expenses.map((x) => x.value).reduce((x, sum) => x + sum, 0);
   const totalProfit = finances.filter((x) => x.month === month)[0].profit.map((x) => x.value).reduce((x, sum) => x + sum, 0);
   const total = totalProfit - totalExpenses;
 
   return (
-    <div className='overview-finance colunm s-evenly scale-in-center'>
+    <div className='overview-finance colunm s-evenly scale-in-center' style={ { backgroundColor: theme.primaryColor, color: theme.textColor }}>
       <div className='sub-finance colunm s-evenly'>
         <div className='colunm s-evenly'>
           <p>
