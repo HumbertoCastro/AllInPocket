@@ -8,24 +8,17 @@ import pocketContext from '../../../context/pocketContext';
 
 const NewNote = ({ setNewNote, setNote, notes }) => {
   const [title, setTitle] = useState('New Note');
-  const [description, setDescription] = useState('');
   const [color, setColor] = useState('#C212D6');
 
   const {
     theme,
   } = useContext(pocketContext);
 
-  const handleChange = ({ target: { value, name } }) => {
-    if (name === "title" && value.length < 15) {
-      console.log(value.length)
-      name === "title" ? setTitle(value) : setDescription(value);
-    }
-  }
+  const handleChange = ({ target: { value } }) => setTitle(value);
 
   const handleClick = () => {
     const noteObject = {
       title,
-      description,
       color,
       id: notes.length + 1,
       content: '',
@@ -44,7 +37,6 @@ const NewNote = ({ setNewNote, setNote, notes }) => {
         }
       </button>
       <InputText name="title" callback={ handleChange } placename="Task Title" />
-      <InputText name="description" callback={ handleChange } placename="Task Description" />
       <label className='colunm s-evenly'>Choose the color for the task
        <ColorsSelect selectedColor={ color } callback={ setColor }/>
       </label>

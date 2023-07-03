@@ -27,13 +27,12 @@ const TaskList = () => {
         </button>
         <div className='row s-btw'>
           {
-            notes.map(({ title, description, color, id }) => (
+            notes.map(({ title, color, id }) => (
               <button style={ { backgroundColor: color } } className="note slit-in-vertical" onClick={ () => {
                 setId(id)
                 setShow(true)
               } }>
                 <h1>{ title }</h1>
-                <p>{ description }</p>
               </button>
             ))
           }

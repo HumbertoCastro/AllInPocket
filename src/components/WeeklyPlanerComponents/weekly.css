@@ -55,6 +55,8 @@
 
 .colors-div {
   align-self: center;
+  align-items: center;
+  text-align: center;
   width: 70vw;
 }
 

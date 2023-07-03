@@ -1,70 +1,82 @@
-# Getting Started with Create React App
+# All.Io - React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to All.Io, a versatile React app designed to help you stay organized and manage your daily tasks, take notes, track your finances, and even check the weather forecast. This README will provide you with an overview of the main features of the app, installation instructions, and screenshots of each screen.
 
-## Available Scripts
+## Table of Contents
 
-In the project directory, you can run:
+- [Features](#features)
+- [Installation](#installation)
+- [Screenshots](#screenshots)
+- [Weather Forecast](#weather-forecast)
+- [Download](#download)
+- [Contributing](#contributing)
+- [License](#license)
 
-### `npm start`
+## Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+All.Io offers the following main functionalities:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+1. Weekly Task Organization: Users can add and edit tasks for their week and day, defining the schedule, name, and duration of each task. The tasks will be displayed on the user's screen, providing a clear overview of their daily schedule.
 
-### `npm test`
+2. Note-Taking: The app provides a note-taking feature where users can create multiple note blocks. Each note block has a title, and by clicking on a note, users can access the text they have written within it. This feature helps users keep track of important information and ideas.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+3. Financial Organization: All.Io allows users to manage their financial transactions by adding them monthly. Users can create expense categories, and when adding a transaction, the app automatically groups it by category. Users can add both positive transactions (e.g., income, sales) and negative transactions (e.g., utility bills, groceries). The app provides a summary of the monthly balance.
 
-### `npm run build`
+4. Weather Forecast (Upcoming): All.Io will soon include a weather forecast feature. It will display the weather information for your current location or the state you specify, providing you with valuable insights to plan your day accordingly.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Installation
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+To run All.Io on your local machine, follow these steps:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. Make sure you have [Node.js](https://nodejs.org) installed.
 
-### `npm run eject`
+2. Clone this repository:
+   ```
+   git clone https://github.com/HumbertoCastro/All.Io.git
+   ```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+3. Navigate to the project's root directory:
+   ```
+   cd All.Io
+   ```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+4. Install the dependencies:
+   ```
+   npm install
+   ```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+5. Start the development server:
+   ```
+   npm start
+   ```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Screenshots
 
-## Learn More
+Here are some screenshots of the All.Io app:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+1. Weekly Task Organization:
+   ![Weekly Task Organization Dark Mode](./src/images/darkm1.png)
+   ![Weekly Task Organization Light Mode](./src/images/lightmode2.png)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+2. Note-Taking:
+   ![Note-Taking Dark Mode](./src/images/darmode1.png)
+   ![Note-Taking light Mode](./src/images/lightmode3.png)
 
-### Code Splitting
+3. Financial Organization:
+   ![Financial Organization](./src/images/lightmode1.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Weather Forecast
 
-### Analyzing the Bundle Size
+The upcoming weather forecast feature will be available soon, providing you with accurate weather information to help you plan your day effectively.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Download
 
-### Making a Progressive Web App
+To download the APK file of All.Io and install it on your mobile device, please click [here](https://drive.google.com/file/d/1uRcNsYfiOJC1EwLjPl5MTyfnHWUY-B0m/view?usp=sharing).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Contributing
 
-### Advanced Configuration
+We welcome contributions to improve All.Io. If you have any ideas, bug reports, or feature requests, please submit them as issues or create a pull request with your changes. We appreciate your contributions.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## License
 
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This project is licensed under the MIT License (Non-Commercial Use Only). Please see the [LICENSE](./LICENSE) file for more details. For commercial licensing inquiries, please contact [humberto-dev@hotmail.com].

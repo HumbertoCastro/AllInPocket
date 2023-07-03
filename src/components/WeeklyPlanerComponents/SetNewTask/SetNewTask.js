@@ -148,7 +148,7 @@ const SetNewTask = ({ id:{ id, taskId }, weak, openInterface }) => {
           }
         </div>
       }
-      <Checkbox onClick={ () => setOnlyOnce(!onlyOnce) } name="Show only tasks" />
+      <Checkbox onClick={ () => setOnlyOnce(!onlyOnce) } name="Only on this day" />
       <select onChange={({ target: { value } }) => {
           setDuration(value);
         }} style={ { backgroundColor: theme.primaryColor, color: theme.textColor }}>

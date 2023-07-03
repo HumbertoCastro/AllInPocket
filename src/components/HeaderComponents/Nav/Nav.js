@@ -5,6 +5,7 @@ import pocketContext from '../../../context/pocketContext';
 import Daily from '../../WeeklyPlanerComponents/Daily/Daily';
 import TaskList from '../../TaskListComponents/TaskList/TaskList';
 import Finance from '../../FinanceComponents/Finance/Finance';
+import Weather from '../../WeatherComponents/Weather/Weather';
 
 const Nav = () => {
   const {
@@ -24,6 +25,7 @@ const Nav = () => {
     <ButtonIcon iconSvg={ svgs.day } callback={ () => {onClick(<Daily />)} } id="2" />
     <ButtonIcon iconSvg={ svgs.note } callback={ () => {onClick(<TaskList />)} } id="3"  />
     <ButtonIcon iconSvg={ svgs.money } callback={ () => {onClick(<Finance />)} } id="4"  />
+    <ButtonIcon iconSvg={ svgs.clouds } callback={ () => {onClick(<Weather />)} } id="5"  />
   </div>)
 };
 
