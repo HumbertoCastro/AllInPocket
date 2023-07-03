@@ -56,10 +56,8 @@ Here are some screenshots of the All.Io app:
 
 1. Weekly Task Organization:
    ![Weekly Task Organization Dark Mode](./src/images/darkm1.png)
-   ![Weekly Task Organization Light Mode](./src/images/lightmode2.png)
 
 2. Note-Taking:
-   ![Note-Taking Dark Mode](./src/images/darmode1.png)
    ![Note-Taking light Mode](./src/images/lightmode3.png)
 
 3. Financial Organization:
