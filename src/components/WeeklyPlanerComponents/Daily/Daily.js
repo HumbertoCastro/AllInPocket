@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import HourlyCard from '../HourlyCard/HourlyCard';
 import pocketContext from '../../../context/pocketContext';
+import { useSwipeable } from 'react-swipeable';
 import '../weekly.css'
 
 const weekday = ["Sun","Mon","Tue","Wed","Thur","Fri","Sat"];
@@ -29,8 +30,27 @@ const Daily = () => {
     } return (<h1 className='no-task'>No tasks to be displayed</h1>)
   }
 
+  const handleSwipeRight = () => {
+    console.log('right')
+    if (weekday.indexOf(selected) !== weekday.length - 1) {
+      setSelected(weekday[weekday.indexOf(selected) + 1]);
+    }
+  }
+
+  const handleSwipeLeft = () => {
+    console.log('left');
+    if (weekday.indexOf(selected) !== 0) {
+      setSelected(weekday[weekday.indexOf(selected) - 1]);
+    }
+  }
+
+  const handlers = useSwipeable({
+    onSwipedRight: handleSwipeRight,
+    onSwipedLeft: handleSwipeLeft,
+  });
+
   return(
-    <div className="colunm s-evenly">
+    <div className="colunm s-evenly" {...handlers}>
       <div className='row s-evenly'>
         {
           weekday.map((day) => (
