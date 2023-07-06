@@ -45,8 +45,8 @@ const Daily = () => {
   }
 
   const handlers = useSwipeable({
-    onSwipedRight: handleSwipeRight,
-    onSwipedLeft: handleSwipeLeft,
+    onSwipedRight: handleSwipeLeft,
+    onSwipedLeft: handleSwipeRight,
   });
 
   return(

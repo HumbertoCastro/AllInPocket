@@ -1,63 +1,93 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Select from 'react-select';
 import fetchCountryNames from '../../../helpers/GeonamesReq';
+import fetchStatesByCountry from '../../../helpers/geonamesReqWithCounty';
+import fetchCitiesByState from '../../../helpers/GeonamesReqWIthStates';
+import pocketContext from '../../../context/pocketContext';
+import Loading from '../../Inputs/Loading/Loading';
 
-const WeatherForm = () => {
+const WeatherForm = ({callback}) => {
+  const {
+    theme,
+  } = useContext(pocketContext);
+
   const [country, setCountry] = useState(null);
   const [city, setCity] = useState('');
   const [state, setState] = useState('');
   const [countryOptions, setCountrys] = useState(null);
+  const [showStates, setShowStates] = useState(false);
+  const [stateOptions, setStateOptions] = useState(null);
+  const [showCities, setShowCities] = useState(false);
+  const [citiesOptions, setCitiesOptions] = useState(null);
 
-  const handleCountryChange = selectedCountry => {
-    setCountry(selectedCountry);
+  async function handleCountryChange({ value }) {
+    setShowCities(false);
+    setShowStates(false);
+    setCountry(value);
+    const res = await fetchStatesByCountry(value);
+    console.log(res)
+    setStateOptions(res);
+    setShowStates(true);
   };
 
-  const handleCityChange = event => {
-    setCity(event.target.value);
-  };
+  async function handleCityChange({ value }) {
+    setCity(value);
+    console.log(value);
+  }
 
-  const handleStateChange = event => {
-    setState(event.target.value);
+  async function handleStateChange({ value }) {
+    setShowCities(false);
+    setState(value);
+    const res = await fetchCitiesByState(country, value);
+    setCitiesOptions(res);
+    setShowCities(true);
   };
+  async function fetchData() {
+    const res = await fetchCountryNames();
+    setCountrys(res);
+  }
 
-  const handleSubmit = event => {
-    event.preventDefault();
-    // Faça a requisição à API utilizando os valores selecionados ou digitados
-    console.log('País:', country);
-    console.log('Cidade:', city);
-    console.log('Estado:', state);
-  };
+  async function fetchDataWithCountry (country) {
+
+  }
 
   useEffect(() => {
-    async function fetchData() {
-      const res = await fetchCountryNames();
-      setCountrys(res);
-    }
     fetchData();
   }, [])
 
   console.log(typeof countryOptions);
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={(event) => {
+      event.preventDefault();
+      callback(city);
+    }}>
       {
         countryOptions ? (
           <>
-            <div>
-              <label>País:</label>
+            <div className='scale-in-center'>
+              <label style={ { color: theme.textColor } }>Country:</label>
               <Select options={countryOptions} onChange={handleCountryChange} />
             </div>
-            <div>
-              <label>Cidade:</label>
-              <input type="text" value={city} onChange={handleCityChange} />
-            </div>
-            <div>
-              <label>Estado:</label>
-              <input type="text" value={state} onChange={handleStateChange} />
-            </div>
-            <button type="submit">Buscar Clima</button>
+            {
+              showStates ? 
+              <div className='scale-in-center'>
+                <label style={ { color: theme.textColor } }>State:</label>
+                <Select options={stateOptions} onChange={handleStateChange} />
+              </div> : null
+            }
+            {
+              showCities ? 
+              <div className='scale-in-center'>
+                <label style={ { color: theme.textColor } }>City:</label>
+                <Select options={citiesOptions} onChange={handleCityChange} />
+              </div> : null
+            }
+            {
+              city && country && state ? <button type="submit" className='btn-search scale-in-center'>Buscar Clima</button> : null
+            }
           </>
-          ) : null
+          ) : <Loading />
       }
     </form>
   );

@@ -1,0 +1,106 @@
+.weather-div {
+  display: flex;
+  flex-direction: column;
+  width: 95vw;
+  margin: auto;
+  border-radius: 20px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  text-align: center;
+  font-weight: 100;
+  background-color: #91cffe;
+  color: white;
+  margin-bottom: 10vh;
+}
+.weather-div img {
+  width: 35vw;
+  align-self: center;
+}
+
+.gray {
+  color: #3d3d3d;
+}
+
+.weather-div p {
+  margin: 0;
+}
+
+.weather-div h1 {
+  margin-top: 20px;
+}
+
+.btn-search {
+  width: 95vw;
+  margin: 2.5vw;
+  align-self: center;
+  height: 5vh;
+  border: 1px solid gray;
+  border-radius: 5px;
+}
+
+.line-v {
+  height: 5vh;
+  width: 1vw;
+  background-color: white;
+  align-self: center;
+}
+
+.temp {
+  align-self: flex-start;
+  display: inline-block;
+  margin: 0 10px;
+}
+
+.temp-div {
+  align-self: center;
+  justify-content: space-evenly;
+  width: 70%;
+  height: 7vh;
+}
+
+.css-13cymwt-control {
+  max-width: 94vw;
+  margin: auto;
+}
+
+.humidity {
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  width: 45vw;
+  min-height: 15vh;
+  border-radius: 20px;
+  margin: 10px auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: nowrap;
+  text-align: center;
+}
+
+.humidity svg {
+  width: 15vw;
+  height: 5vh;
+}
+
+.humidity p {
+  margin: 2px;
+}
+
+.hourly-card {
+  align-items: center;
+  border-bottom: 1px solid rgb(38, 38, 49);
+  height: 15vh;
+}
+
+.hourly-card h1 {
+  margin: 0;
+}
+
+.hourly-card img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.img-div {
+  height: 200px;
+}
