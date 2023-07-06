@@ -3,7 +3,7 @@ import axios from 'axios';
 const fetchCitiesByState = async (countryCode, stateCode) => {
   try {
     var headers = new Headers();
-    headers.append("X-CSCAPI-KEY", "VHpUb0p0djBVWkZFODRGbTBxZFMzWjYxY2s1MDhrV2c3N0ZvT3IwaA==");
+    headers.append("X-CSCAPI-KEY", process.env.REACT_APP_API_KEY);
 
     var requestOptions = {
     method: 'GET',

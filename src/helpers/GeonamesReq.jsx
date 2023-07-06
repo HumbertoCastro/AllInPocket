@@ -1,12 +1,11 @@
 import axios from 'axios';
 
-const geonamesUsername = 'humbertocastro';
-console.log(process.env.GEONAMES_USERNAME)
+const geonamesUsername = process.env.REACT_APP_GEONAMES_USERNAME;
 const baseUrl = 'http://api.geonames.org';
 
 const fetchCountryNames = async () => {
   try {
-    console.log(process.env.GEONAMES_USERNAME)
+    console.log(process.env.GEONAMES_USERNAME, 'USERNAME');
     const response = await axios.get(`${baseUrl}/countryInfoJSON`, {
       params: {
         username: geonamesUsername,

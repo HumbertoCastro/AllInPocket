@@ -14,11 +14,9 @@ const Weather = () => {
     const apiKey = process.env.REACT_APP_WEATHER_API_KEY;
     try {
       const response = await axios.get(`http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${location}&days=1&aqi=yes&alerts=yes`);
-      console.log(response);
       setWeatherData(response.data);
       setLoading(false);
     } catch (error) {
-      console.log(error);
     }
   };
 
