@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 const fetchStatesByCountry = async (countryCode) => {
+  console.log(countryCode)
   try {
     var headers = new Headers();
     headers.append("X-CSCAPI-KEY", process.env.REACT_APP_API_KEY);

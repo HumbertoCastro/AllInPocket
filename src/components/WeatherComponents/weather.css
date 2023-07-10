@@ -11,6 +11,7 @@
   color: white;
   margin-bottom: 10vh;
 }
+
 .weather-div img {
   width: 35vw;
   align-self: center;
@@ -103,4 +104,29 @@
 
 .img-div {
   height: 200px;
+}
+
+select {
+  background-color: none;
+}
+
+option {
+  background-color: none;
+}
+
+.select-cep {
+  width: 80%;
+  font-size: 1.5rem;
+  text-align: center;
+  background-color: white;
+}
+
+.select-div {
+  overflow: hidden;
+  margin: 1vh;
+}
+
+.select-div label {
+  align-self: flex-start;
+  margin: 0;
 }

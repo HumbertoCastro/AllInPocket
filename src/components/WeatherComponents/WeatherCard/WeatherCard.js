@@ -22,7 +22,7 @@ const WeatherCard = ({ weatherData }) => {
   console.log(arrayHours);
 
   return (
-    <>
+    <div className='weather-card'>
     <div className='subs row s-evenly' >
       <div className='humidity scale-in-center' style={ { backgroundColor: theme.primaryColor, color: theme.textColor } }>
         {
@@ -93,7 +93,7 @@ const WeatherCard = ({ weatherData }) => {
         })
       }
     </div>
-    </>
+    </div>
 )};
 
 WeatherCard.propTypes = {};

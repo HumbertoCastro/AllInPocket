@@ -58,6 +58,7 @@ function Provider({ children }) {
   const [notes, setNotes] = useState(notesList);
   const [finances, setFinances] = useState(localStorage.getItem('finances') ? JSON.parse(localStorage.getItem('finances')) : yearFinance);
   const [theme, setTheme] = useState(localStorage.getItem('theme') ? JSON.parse(localStorage.getItem('theme')) : themes.light);
+  const [fetchDataWeather, setFetchData] = useState();
 
   const toggleTheme = () => {
     setTheme(theme === themes.light ? themes.dark : themes.light);
@@ -66,6 +67,8 @@ function Provider({ children }) {
 
 
   const contextValue = {
+    fetchDataWeather, 
+    setFetchData,
     prTypes,
     setPrtypes,
     exTypes,
