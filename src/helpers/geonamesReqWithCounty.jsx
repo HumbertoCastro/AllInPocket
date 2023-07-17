@@ -1,27 +1,25 @@
-import axios from 'axios';
+import { CapacitorHttp } from '@capacitor/core';
 
 const fetchStatesByCountry = async (countryCode) => {
-  console.log(countryCode)
+
   try {
-    var headers = new Headers();
+    const headers = new Headers();
     headers.append("X-CSCAPI-KEY", process.env.REACT_APP_API_KEY);
 
-    var requestOptions = {
-    method: 'GET',
-    headers: headers,
-    redirect: 'follow'
+    const options = {
+      url: `https://api.countrystatecity.in/v1/countries/${countryCode}/states`,
+      headers: headers,
+      params: { size: 'XL' },
     };
 
-    const res = fetch(`https://api.countrystatecity.in/v1/countries/${countryCode}/states`, requestOptions)
-    .then(response => response.json())
-    .then(jsonres => jsonres.map((x) => {
+      
+    const response = await CapacitorHttp.get(options);
+    return response.data.map((x) => {
       return {
         value: x.iso2,
         label: x.name,
       }
-    }))
-    .catch(error => error);
-    return res;
+    });
   } catch (error) {
     console.error('Erro ao buscar estados:', error);
     return [];

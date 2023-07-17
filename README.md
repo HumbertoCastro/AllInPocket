@@ -69,7 +69,7 @@ The upcoming weather forecast feature will be available soon, providing you with
 
 ## Download
 
-To download the APK file of All.Io and install it on your mobile device, please click [here](https://drive.google.com/file/d/1uRcNsYfiOJC1EwLjPl5MTyfnHWUY-B0m/view?usp=sharing).
+To download the APK file of All.Io and install it on your mobile device, please click [here](https://play.google.com/store/apps/details?id=com.allio.app).
 
 ## Contributing
 

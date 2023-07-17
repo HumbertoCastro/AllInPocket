@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from 'react';
-import Select from 'react-select';
 import fetchCountryNames from '../../../helpers/GeonamesReq';
 import fetchStatesByCountry from '../../../helpers/geonamesReqWithCounty';
 import fetchCitiesByState from '../../../helpers/GeonamesReqWIthStates';
@@ -53,16 +52,9 @@ const WeatherForm = ({callback, setLoad}) => {
     setLoad(false);
     setCountrys(res);
   }
-
-  async function fetchDataWithCountry (country) {
-
-  }
-
   useEffect(() => {
     fetchData();
   }, [])
-
-  console.log(typeof countryOptions);
 
   return (
     <form onSubmit={(event) => {
@@ -75,6 +67,7 @@ const WeatherForm = ({callback, setLoad}) => {
             <div className='scale-in-center select-div colunm s-btw'>
               <label style={ { color: theme.textColor } }>Country:</label>
               <select onChange={handleCountryChange} className='select-cep' style={{ backgroundColor: theme.backgroundColor, color: theme.textColor }}>
+                <option value=''>Select Country</option>
                 {
                   countryOptions.map(({ value, label }) => (<option value={ value }>{ label }</option>))
                 }
@@ -85,6 +78,7 @@ const WeatherForm = ({callback, setLoad}) => {
               <div className='scale-in-center select-div colunm s-btw'>
                 <label style={ { color: theme.textColor } }>State:</label>
                 <select onChange={handleStateChange} className='select-cep' style={{ backgroundColor: theme.backgroundColor, color: theme.textColor }}>
+                <option value=''>Select State</option>
                   {
                     stateOptions.map(({ value, label }) => (<option value={ value }>{ label }</option>))
                   }
@@ -96,6 +90,7 @@ const WeatherForm = ({callback, setLoad}) => {
               <div className='scale-in-center select-div colunm s-btw'>
                 <label style={ { color: theme.textColor } }>City:</label>
                 <select onChange={handleCityChange} className='select-cep' style={{ backgroundColor: theme.backgroundColor, color: theme.textColor }}>
+                <option value=''>Select City</option>
                   {
                     citiesOptions.map(({ value, label }) => (<option value={ value }>{ label }</option>))
                   }
