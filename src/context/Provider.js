@@ -39,6 +39,7 @@ function Provider({ children }) {
   const [fetchDataWeather, setFetchData] = useState();
 
   const toggleTheme = () => {
+    document.querySelector('body').style.backgroundColor = theme === themes.light ? themes.dark.backgroundColor : themes.light.backgroundColor;
     setTheme(theme === themes.light ? themes.dark : themes.light);
     localStorage.setItem('theme', theme === themes.light ? JSON.stringify(themes.dark) : JSON.stringify(themes.light));
   };

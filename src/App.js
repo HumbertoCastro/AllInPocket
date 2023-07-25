@@ -1,6 +1,6 @@
 import './App.css';
 import './Animations.css'
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import Header from './components/HeaderComponents/Header/Header'
 import pocketContext from './context/pocketContext';
 import Nav from './components/HeaderComponents/Nav/Nav'
@@ -11,6 +11,10 @@ function App() {
     page,
     theme,
   } = useContext(pocketContext);
+
+  useEffect(() => {
+    document.querySelector('body').style.backgroundColor = theme.backgroundColor;
+  }, [])
 
   const MainContent = () => (
     <>

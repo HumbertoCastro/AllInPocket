@@ -107,7 +107,7 @@ const Daily = () => {
           value={month}
         >
           <p>{month.substring(0,3)}</p>
-          <h1>{ x }</h1>
+          <h1 style={ { color: theme.textColor } }>{ x }</h1>
         </button>
       </div>);
       daysToBeDisplay.push(...arrayOfDays);      
