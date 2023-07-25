@@ -38,7 +38,6 @@ const Weather = () => {
 
   return (
     <div>
-      <h1>NOVO</h1>
     <WeatherForm callback={ handleClick } setLoad={ setLoading } />
       {
         !fetchDataWeather ? 

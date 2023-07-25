@@ -1,9 +1,9 @@
 .note {
-  width: 31vw;
-  height: 16vh;
+  width: 90vw;
+  height: 12vh;
   color: white;
   border-radius: 20px;
-  margin: 2px;
+  margin: 10px auto;
 }
 
 .note h1 {

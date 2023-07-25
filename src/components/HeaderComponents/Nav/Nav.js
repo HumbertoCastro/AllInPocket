@@ -14,6 +14,8 @@ const Nav = () => {
   } = useContext(pocketContext);
 
   const onClick = (pageName) => {
+    const buttons = [...document.querySelectorAll('.b-icon')];
+    buttons.forEach((x) => x.className = 'b-icon');
     setPage(pageName)
   }
 

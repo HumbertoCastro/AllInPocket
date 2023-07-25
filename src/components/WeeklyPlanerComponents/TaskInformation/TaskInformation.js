@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-const TaskInformation = ({ task: { task }, id }) => {
+const TaskInformation = ({ task, id }) => {
   const {
     title,
     description,

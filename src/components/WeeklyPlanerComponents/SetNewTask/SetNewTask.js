@@ -1,123 +1,94 @@
 import React, { useContext, useEffect, useState } from 'react';
 import pocketContext from '../../../context/pocketContext';
 import svgs from '../../../helpers/svg';
-import Checkbox from '../../Inputs/checkbox/Checkbox';
 import ColorsSelect from '../../Inputs/ColorsSelect/ColorsSelect';
 import InputText from '../../Inputs/InputText/InputText';
-const weekday = ["Sun","Mon","Tue","Wed","Thur","Fri","Sat"];
-const Tempos = ['00:30', '01:00', '01:30', '02:00', '02:30', '03:00', '03:30', '04:00'];
+import ReturnMinutesFromZero from '../../../helpers/ReturnMinutesFromZero';
+import { dates } from '../../../helpers/GetAllDays';
+import ReturnMinutesWithIncrements from '../../../helpers/MinutesWithIncrements';
+const Tempos = ReturnMinutesFromZero;
 
-const SetNewTask = ({ id:{ id, taskId }, weak, openInterface }) => {  
+  const SetNewTask = ({ id, openInterface, altura }) => {
+  const hj = new Date();
+
   const [title, setTitle] = useState('Task title');
   const [description, setDescription] = useState('Task description');
-  const [weakDays, setWeakDays] = useState([]);
-  const [onlyOnce, setOnlyOnce] = useState(false);
   const [duration, setDuration] = useState(1);
-  const [color, setColor] = useState('#00000');
+  const [color, setColor] = useState('#73C0FC');
   const [rmBtn, setRmBtn] = useState(false);
+  const [date, setDate] = useState(`2023-${hj.getMonth() < 10 ? `0${hj.getMonth() + 1}` : hj.getMonth() + 1}-${hj.getDate() < 10 ? `0${hj.getDate()}` : hj.getDate()}`);
+  const [time, setTime] = useState('06:00');
 
   const {
     tasks,
     setTasks,
-    setNofTasks,
-    nTasks,
     theme,
   } = useContext(pocketContext);
 
   useEffect(() => {
-    console.log(tasks);
-    const currentTask = tasks.filter((weakDay) => weakDay.weak === weak)[0].cardArray.find((x) => x.id === id);
-    setWeakDays([weak]);
-    setTitle(currentTask.task.title);
-    setDescription(currentTask.task.description);
+    console.log(date)
+    if (id) {
+    const currentTask = tasks.filter((x) => x.id === id)[0];
+    console.log(currentTask, Object.values(currentTask)[2]);
+    setTitle(currentTask.title);
+    setDescription(currentTask.description);
+    setDuration(currentTask.duration);
+    setTime(currentTask.time);
     setColor(currentTask.color);
-    console.log(currentTask);
-    if ( currentTask.taskId !== 0) {
-      const weaksThatRepet = tasks.filter(({ cardArray }) => cardArray.some((x) => x.taskId === currentTask.taskId)).map((y) => y.weak);
-      setWeakDays(weaksThatRepet);
-      setRmBtn(true);
+    setDate(returnDateFormat(currentTask.date));
+    setRmBtn(true)
+    } else {
+      setDate(`2023-${hj.getMonth() < 10 ? `0${hj.getMonth() + 1}` : hj.getMonth() + 1}-${hj.getDate() < 10 ? `0${hj.getDate()}` : hj.getDate()}`)
     }
-    const newTaskObject = document.querySelector(".new-task");
-    newTaskObject.style.top = document.documentElement.scrollTop + 'px';
-  }, [onlyOnce])
+  }, [])
+
+  const returnDateFormat = (taskDate) => {
+    const mes = dates.indexOf(dates.find((x) => x.month === taskDate[0]));
+    console.log(mes)
+    return `2023-${mes < 10 ? `0${mes + 1}` : mes + 1}-${taskDate[1]}`
+  }
 
   const handleChange = ({ target: { value, name } }) => {
     name === "title" ? setTitle(value) : setDescription(value);
   }
 
-  const handleWeakClick = ({ target: { name, className } }) => {
-    weakDays.some((x) => x === name) ? setWeakDays(weakDays.filter((y) => y !== name)) : setWeakDays([...weakDays, name]);
-  }
-
   const handleDelete = () => {
-    tasks.filter(({ cardArray }) => {
-      for (let i = id + 1; i < parseInt(cardArray[id].task.duration) + id; i += 1) {
-        cardArray[i].overlap = false;
-        cardArray[i].task.duration = '0';
-      }
-      return cardArray;
-    });
-    const filter = tasks;
-    for (let i = 0; i < filter.length; i += 1) {
-      filter[i].cardArray.forEach((x) => {
-        if (x.taskId === taskId) {
-          x.hasTask = false;
-          x.taskId = 0;
-          x.color = 'teste';
-          setNofTasks(nTasks - 1);
-        }
-      })
-    }
-    setTasks(filter);
-    openInterface(false);
-    localStorage.setItem('tasklist', JSON.stringify(filter));
+    console.log(id);
+    setTasks(tasks.filter((x) => x.id !== id));
+    openInterface(false)
+    localStorage.setItem('tasklist', JSON.stringify(tasks.filter((x) => x.id !== id)));
   }
 
   const handleClick = () => {
-    tasks.filter(({ cardArray }) => {
-      for (let i = id + 1; i < parseInt(cardArray[id].task.duration) + id; i += 1) {
-        cardArray[i].overlap = false;
-        cardArray[i].task.duration = '0';
-      }
-      return cardArray;
-    });
-    const newTasks = tasks;
-    const newObject = {
+    const mes = dates[parseInt(date.substring(5,7)) - 1].month;
+    const dia = parseInt(date.substring(8,10))
+    console.log([mes, dia])
+    const newTasksArray = tasks ? tasks : [];
+    const newTaskObject = {
       title,
       description,
+      date: [mes, dia],
+      color,
       duration,
+      time,
+      id: localStorage.getItem('alltimetasks') ? parseInt(localStorage.getItem('alltimetasks')) + 1 : 1,
     }
-    !onlyOnce ? newTasks.filter((weakList) => weakDays.some((x) => x === weakList.weak)).forEach((x) => {
-      for (let i = id + 1; i < id + parseInt(duration); i += 1) {
-        x.cardArray[i].overlap = true;
-      }
-      Object.assign(x.cardArray.find((x) => x.id === id), {
-        task: newObject,
-        hasTask: true,
-        taskId: nTasks + 1,
-        color,
-      })
-    }) : newTasks.filter((weakList) => weakList.weak === weak).forEach((x) => {
-      for (let i = id + 1; i < id + duration; i += 1) {
-        x.cardArray[i].overlap = true;
-      }
-      Object.assign(x.cardArray.find((x) => x.id === id), {
-        task: newObject,
-        hasTask: true,
-        taskId: nTasks + 1,
-        color,
-      })     
-    })
+    if (id) {
+      newTaskObject.id = id;
+      setTasks(tasks.map((x) => x.id === id ? newTaskObject : x));
+      localStorage.setItem('tasklist', JSON.stringify(newTasksArray));
+    } else {
+      setTasks([...newTasksArray, newTaskObject]);
+      localStorage.setItem('tasklist', JSON.stringify([...newTasksArray, newTaskObject]));
+      localStorage.setItem('alltimetasks', localStorage.getItem('alltimetasks') ? parseInt(localStorage.getItem('alltimetasks')) + 1 : 1);
+    }
     setDuration(0);
-    setNofTasks(nTasks + 1);
-    setTasks(newTasks);
     openInterface(false);
-    localStorage.setItem('tasklist', JSON.stringify(newTasks));
   }
 
   return(
     <div className="new-task colunm s-evenly scale-in-ver-top " style={ {
-      backgroundColor: theme.primaryColor, color: theme.textColor, boxShadow: theme.boxShadow }}>
+      backgroundColor: theme.primaryColor, color: theme.textColor, boxShadow: theme.boxShadow, top: altura }}>
       <button className='x-btn' onClick={() => {
         openInterface(false);
       }} style={ { backgroundColor: theme.primaryColor, color: theme.textColor }}>
@@ -127,34 +98,30 @@ const SetNewTask = ({ id:{ id, taskId }, weak, openInterface }) => {
       </button>
       <InputText name="title" callback={ handleChange } placename={ title } />
       <InputText name="description" callback={ handleChange } placename={ description } />
-      {
-        onlyOnce ? null :
-        <div>
-          Repet on:
-          {
-            (
-              weekday.map((x) => (
-                <button
-                  name={ x }
-                  className={ weakDays.some((dayname) => dayname === x) ? "selected weak-day s-scale" : "weak-day"}
-                  style={ { backgroundColor: theme.backgroundColor, color: theme.textColor }}
-                  onClick={ handleWeakClick }>
-                  {
-                    x
-                  }
-                </button>
-              ))
-            )
-          }
-        </div>
-      }
-      <Checkbox onClick={ () => setOnlyOnce(!onlyOnce) } name="Only on this day" />
+      <label>
+        When:
+        <input type='date' value={ date } className='date-input' onChange={({target: { value }}) => {
+          setDate(value);
+        }}/>
+      </label>
       <select onChange={({ target: { value } }) => {
-          setDuration(value);
-        }} style={ { backgroundColor: theme.primaryColor, color: theme.textColor }}>
+        console.log(value);
+        setTime(value);
+        }} style={ { backgroundColor: theme.primaryColor, color: theme.textColor }} value={time}>
+        <option value="1">Set the time</option>
+            {
+              ReturnMinutesWithIncrements.map((x, index) => (
+                <option value={ x } key={ `${index}-${x}` }>{ x }</option>
+              ))
+            }
+      </select>
+      <select onChange={({ target: { value } }) => {
+        console.log(value)
+        setDuration(value);
+        }} style={ { backgroundColor: theme.primaryColor, color: theme.textColor }} value={duration}>
         <option value="1">How long will it last</option>
             {
-              Tempos.map((x, index) => (
+              Tempos.slice(1).map((x, index) => (
                 <option value={ index + 1 } key={ `${index}-${x}` }>{ x }</option>
               ))
             }

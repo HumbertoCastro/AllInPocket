@@ -26,35 +26,13 @@ const themes = {
 };
 
 function Provider({ children }) {
-  const weakArray = !localStorage.getItem('tasklist') ? weekday.map((day) => {
-    const cardArray = ReturnMinutes.map((x, index) => {
-      const objeto = {
-        time: x,
-        hasTask: false,
-        overlap: false,
-        task: {
-          title: 'Task Title',
-          description: 'Task description',
-        },
-        id: index,
-        weak: day,
-        taskId: 0,
-        color: '#00000'
-      }
-      return objeto
-    });
-    return {
-      cardArray,
-      weak: day,
-    };
-  }) : JSON.parse(localStorage.getItem('tasklist'));
+  const taskArray = JSON.parse(localStorage.getItem('tasklist')) ? JSON.parse(localStorage.getItem('tasklist')) : null;
   const notesList = localStorage.getItem('notes') ?  JSON.parse(localStorage.getItem('notes')) : []
   const [page, setPage] = useState(<Daily />);
   const [exTypes, setExtypes] = useState(localStorage.getItem('exTypes') ? JSON.parse(localStorage.getItem('exTypes')) : types);
   const [prTypes, setPrtypes] = useState(localStorage.getItem('prTypes') ? JSON.parse(localStorage.getItem('prTypes')) : ptypes);
-  const [tasks, setTasks] = useState(weakArray);
+  const [tasks, setTasks] = useState(taskArray);
   const [interfaceNewTask, openInterface] = useState(false);
-  const [nTasks, setNofTasks] = useState(0);
   const [notes, setNotes] = useState(notesList);
   const [finances, setFinances] = useState(localStorage.getItem('finances') ? JSON.parse(localStorage.getItem('finances')) : yearFinance);
   const [theme, setTheme] = useState(localStorage.getItem('theme') ? JSON.parse(localStorage.getItem('theme')) : themes.light);
@@ -83,8 +61,6 @@ function Provider({ children }) {
     setTasks,
     interfaceNewTask,
     openInterface,
-    nTasks,
-    setNofTasks,
     theme,
     setTheme,
     toggleTheme,

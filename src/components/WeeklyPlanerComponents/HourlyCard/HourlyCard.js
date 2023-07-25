@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import TaskInformation from '../TaskInformation/TaskInformation';
 import SetNewTask from '../SetNewTask/SetNewTask';
 import pocketContext from '../../../context/pocketContext';
+import ReturnMinutesWithIncrements from '../../../helpers/MinutesWithIncrements';
 
 
 const HourlyCard = ({ task }) => {
@@ -9,45 +10,21 @@ const HourlyCard = ({ task }) => {
   const {
     theme,
   } = useContext(pocketContext);
-  const { time, hasTask, id, weak, color, taskId } = task;
-  const duration = task.task.duration ? task.task.duration : 1;
-  const hour = time.slice(0, 2);
-  const minutos = time.slice(3, 5);
+  const { time, id, color } = task;
+  const duration = task.duration;
+  const altura = (ReturnMinutesWithIncrements.indexOf(time) * 2.5) + 17.5 + 'vh';
 
   const renderTask = () => (
-    <div className="row time-card scale-in-center" style={ hasTask ? 
-      { 
-        height: duration * 12 + 'vh',
+    <div className="row time-card scale-in-center" style={{ 
+        height: (duration * 2.5) + 'vh',
         backgroundColor: theme.primaryColor,
-      } : {
-        backgroundColor: theme.primaryColor,
-      } }>
-      <button className='row s-btw' onClick={ () => setOpen(true) } style={ hasTask ? 
-        {
+        top: altura,
+      }}>
+      <button className='row s-btw card' onClick={ () => setOpen(true) } style={{
           backgroundColor: color,
           color: theme.textColor,
-        } : {
-          backgroundColor: theme.primaryColor,
-          color: theme.textColor,
-        } }>
-        <div className="colunm s-center times">
-          <p className='i-b n-margin'>
-            {
-              hour
-            }
-          </p>
-          <p className='i-b n-margin'>
-            ..
-          </p>
-          <p className='i-b n-margin'>
-            {
-              minutos
-            }
-          </p>
-        </div>
-        {
-          hasTask ? <TaskInformation task={ task } id={id} /> : <p className='task-inf add-task'>Add task</p>
-        }
+        }}>
+        <TaskInformation task={ task } id={id} />
       </button>
     </div>
   )
@@ -56,7 +33,7 @@ const HourlyCard = ({ task }) => {
   return (
     <>
       {
-        openInterface ? <SetNewTask id={ { id, taskId } } weak={ weak } openInterface={ setOpen } /> : renderTask()
+        openInterface ? <SetNewTask id={ id } openInterface={ setOpen } altura={altura} /> : renderTask()
       }
     </>
   )

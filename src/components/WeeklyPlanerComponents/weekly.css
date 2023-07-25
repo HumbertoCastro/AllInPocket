@@ -1,11 +1,96 @@
 
 .time-card {
-  height: 13vh;
+  position: absolute;
+  height: 15vh;
   border-radius: 20px;
   background: #ffffff;
+  width: 92vw;
+  margin: 0px 0px 5px 6vw;
+  top: 15vh;
+  z-index: 2;
+}
+
+.card {
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+.line-div {
+  width: 100vw;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.line-div div {
   width: 95vw;
-  margin: 5px auto;
+  height: 1px;
+  background-color: gray;
+  z-index: -2;
+}
+
+.line-div p {
+  align-self: flex-start;
+}
+
+.slide-month {
+  position: absolute;
+  top: 5vh;
+  margin-top: 0;
+}
+
+.days-selector {
+  border: none;
+  box-shadow: none;
+  height: 8vh;
+}
+
+.days-selector p {
+  color: grey;
+  margin: 0;
+}
+
+.slick-div {
+  width: 88vw;
+  margin: auto;
+}
+
+.slick-arrow {
+  display: none;
+}
+
+.all-times {
+  position: absolute;
+  top: 10vh;
+  z-index: 2;
+}
+
+.days {
+  flex-wrap: nowrap;
+  overflow-x: scroll;
+}
+
+.add-task-btn {
+  position: fixed;
+  top: 84vh;
+  right: 5vw;
+  color: blue;
+}
+
+.add-task-btn svg {
+  width: 10vw !important;
+  height: 10vw !important;
+}
+
+.side-times {
+  height: 15vh;
+  align-items: start;
+  justify-content: center;
+  width: 5vw;
+}
+
+.side-times p {
+  margin: 1px;
+  font-size: 0.7rem;
 }
 
 .time-card .s-btw {
@@ -25,14 +110,16 @@
 }
 
 .new-task {
-  margin: 10px auto;
-  width: 95vw;
+  position: absolute;
+  margin: 0px 0px 5px 6vw;
+  width: 92vw;
   height: 70vh;
   background-color: white;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
   border-radius: 20px;
-  z-index: 2;
+  z-index: 10;
   text-align: center;
+  top: 35vh;
 }
 
 .task-inf {
@@ -49,7 +136,9 @@
   align-items: center;
   justify-content: center;
   align-self: center;
-  color: #F0F0F0;
+  color: #858585;
+  z-index: 4;
+  font-size: 2rem;
 }
 
 
