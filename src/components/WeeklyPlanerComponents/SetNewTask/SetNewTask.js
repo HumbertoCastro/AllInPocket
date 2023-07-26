@@ -138,7 +138,7 @@ const Tempos = ReturnMinutesFromZero;
           </p>
         </button>
         {
-          rmBtn ? <button onClick={handleDelete} style={ {color: 'red'} }>Remove Existing task</button> : null
+          rmBtn ? <button onClick={handleDelete} style={ {color: 'red', backgroundColor: theme.primaryColor} }>Remove Existing task</button> : null
         }
       </div>
     </div>

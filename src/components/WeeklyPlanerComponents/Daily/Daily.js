@@ -103,11 +103,11 @@ const Daily = () => {
             console.log(month, x);
             setSelected([month, x]);
           }}
-          style={ { color: selected[0] === month && selected[1] === x ? null : theme.color, backgroundColor: theme.backgroundColor } }
+          style={ { backgroundColor: theme.backgroundColor } }
           value={month}
         >
           <p>{month.substring(0,3)}</p>
-          <h1 style={ { color: theme.textColor } }>{ x }</h1>
+          <h1 style={ { color: selected[0] === month && selected[1] === x ? '#73C0FC' : theme.textColor } }>{ x }</h1>
         </button>
       </div>);
       daysToBeDisplay.push(...arrayOfDays);      
@@ -135,6 +135,7 @@ const Daily = () => {
           {
             renderMinutesDiv()
           }
+          <div className='hidden'></div>
         </div>
         {
           openInterface ? <SetNewTask openInterface={ setOpen } altura={document.documentElement.scrollTop + (window.innerHeight / 100) * 15 } /> : null

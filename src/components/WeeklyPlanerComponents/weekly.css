@@ -141,6 +141,10 @@
   font-size: 2rem;
 }
 
+.hidden {
+  height: 5vh;
+  margin: 5vh;
+}
 
 .colors-div {
   align-self: center;

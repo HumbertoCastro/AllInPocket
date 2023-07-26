@@ -23,16 +23,12 @@ const BlockOfNotes = ({ id, notes, setNotes, setShow }) => {
       <textarea onChange={ handleChange } value={ text } placeholder='Write your notes here'
       style={ { backgroundColor: theme.primaryColor, color: theme.textColor }}>
       </textarea>
-      <div className='row blocks'>
-        <button onClick={ () => { 
-          console.log('d')
-          setShow(false)
-           }} style={ { backgroundColor: theme.backgroundColor, color: theme.textColor }}>
-          {
-            svgs.exit()
-          }
-        </button>
-      </div>
+      <button className='rm-btn row' onClick={ () => setShow(false) } 
+        style={ { color: theme.textColor, backgroundColor: theme.backgroundColor } }>
+        {
+          svgs.exit('500')
+        }
+      </button>
     </div>
   )
 };

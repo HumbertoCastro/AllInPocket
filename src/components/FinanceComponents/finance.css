@@ -147,6 +147,7 @@ label {
 .delete {
   height: 70%;
   align-self: center;
+  flex-wrap: nowrap;
 }
 
 .delete svg {

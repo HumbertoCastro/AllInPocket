@@ -4,6 +4,7 @@ import pocketContext from '../../../context/pocketContext';
 import svgs from '../../../helpers/svg';
 import NewNote from '../NewNote/NewNote';
 import BlockOfNotes from '../BlockOfNotes/BlockOfNotes';
+import TaskCard from '../TaskCard/TaskCard';
 
 
 const TaskList = () => {
@@ -16,24 +17,14 @@ const TaskList = () => {
     theme,
   } = useContext(pocketContext);
 
+  console.log(notes);
+
   const renderTasks = () => (
     <div className='colunm' style={ { width: '100vw' }}>
-        <button className='note-btn row s-evenly' onClick={() => { setNewNote(!newNote) }}
-        style={ { backgroundColor: theme.primaryColor, color: theme.textColor }}>
-        add note
-          {
-            svgs.note()
-          }
-        </button>
         <div className='row s-btw'>
           {
             notes.map(({ title, color, id }) => (
-              <button style={ { backgroundColor: color } } className="note slit-in-vertical" onClick={ () => {
-                setId(id)
-                setShow(true)
-              } }>
-                <h1>{ title }</h1>
-              </button>
+              <TaskCard id={id} title={title} color={color} setId={setId} setShow={setShow} />
             ))
           }
          </div> 
@@ -43,9 +34,21 @@ const TaskList = () => {
   return(
     <div className='row blocks scale-in-center'>
       {
-        showNote ? <BlockOfNotes id={ id } notes={ notes } setNotes={setNotes} setShow={ setShow } /> :
-        ( !newNote ? renderTasks() : <NewNote setNewNote={ setNewNote } setNote={ setNotes } notes={ notes } />)
+        newNote && !showNote ? <NewNote setNewNote={ setNewNote } setNote={ setNotes } notes={ notes } /> : 
+        showNote ? null : 
+        <button className='note-btn row s-evenly' onClick={() => { setNewNote(!newNote) }}
+        style={ { backgroundColor: theme.primaryColor, color: theme.textColor }}>
+        add note
+          {
+            svgs.note()
+          }
+        </button>
       }
+      {
+        showNote ? <BlockOfNotes id={ id } notes={ notes } setNotes={setNotes} setShow={ setShow } /> : renderTasks()
+      }
+      <div className='hidden'>
+      </div>
     </div>
   )
 };

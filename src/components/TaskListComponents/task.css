@@ -10,6 +10,30 @@
   font-size: 1em;
 }
 
+.up-rm-div {
+  width: 100%;
+}
+
+.rm-btn-task {
+  align-self: center;
+}
+
+.edit-btn {
+  align-self: flex-end;
+  width: 7vw;
+  margin: 0;
+  float: right;
+  bottom: 0;
+}
+
+.rm-btn {
+  position: absolute;
+  position: fixed;
+  top: 80vh;
+  background-color: none;
+  right: 0;
+}
+
 .note-only-btn {
   width: 100vw;
   height: 80vh;
@@ -23,9 +47,9 @@
 
 
 .new-note {
-  margin: auto;
+  margin: 10px auto;
   width: 95vw;
-  height: 80vh;
+  height: 60vh;
   border-radius: 20px;
   align-items: center;
   text-align: center;
@@ -66,5 +90,6 @@ textarea {
   margin-bottom: 20px;
   align-items: center;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  width: 95%;
 }

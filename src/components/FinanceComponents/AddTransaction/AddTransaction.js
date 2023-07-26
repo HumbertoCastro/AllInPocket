@@ -82,7 +82,7 @@ const AddTransaction = ({ callback, useMonth }) => {
         <div class="form">
           <input type='number' className='input' placeholder='How much ?' onChange={({ target: { value } }) => {
             setValue(parseInt(value));
-          }}/>
+          }} style={ { color: theme.textColor }}/>
           <span class="input-border"></span>
         </div>
       </div>

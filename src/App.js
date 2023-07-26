@@ -14,6 +14,10 @@ function App() {
 
   useEffect(() => {
     document.querySelector('body').style.backgroundColor = theme.backgroundColor;
+    const w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+    const h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+    document.querySelector('body').style.width = w;
+    document.querySelector('body').style.height = h;
   }, [])
 
   const MainContent = () => (

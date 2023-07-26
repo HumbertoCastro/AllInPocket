@@ -2,12 +2,12 @@ import { CapacitorHttp } from '@capacitor/core';
 
 const fetchCitiesByState = async (countryCode, stateCode) => {
   try {
-    var headers = new Headers();
-    headers.append("X-CSCAPI-KEY", process.env.REACT_APP_API_KEY);
+    //var headers = new Headers();
+    //headers.append("X-CSCAPI-KEY", process.env.REACT_APP_API_KEY);
 
     const options = {
       url: `https://api.countrystatecity.in/v1/countries/${countryCode}/states/${stateCode}/cities`,
-      headers: headers,
+      headers: {"X-CSCAPI-KEY": process.env.REACT_APP_API_KEY},
       params: { size: 'XL' },
     };
 
