@@ -61,7 +61,7 @@ const NewNote = ({ setNewNote, setNote, notes, task }) => {
         }
       </button>
       <InputText name="title" callback={ handleChange } placename={ task ? task.title : 'Task Title' } />
-      <label className='colunm s-evenly'>Choose the color for the task
+      <label className='colunm s-evenly'>Choose the color for the note
        <ColorsSelect selectedColor={ color } callback={ setColor }/>
       </label>
       <div className='string-btn' style={ { backgroundColor: theme.primaryColor, color: theme.textColor }}>
@@ -69,9 +69,9 @@ const NewNote = ({ setNewNote, setNote, notes, task }) => {
           task ? (
             <div className='row s-btw up-rm-div'>
               <div onClick={ handleClick }>
-                <p>Update task</p>
+                <p>Update note</p>
               </div>
-              <div style={ { color: 'red' } } className='rm-btn-task' onClick={ handleDelete }>Delete task</div>
+              <div style={ { color: 'red' } } className='rm-btn-task' onClick={ handleDelete }>Delete note</div>
             </div>
           ) : <div onClick={ handleClick } ><p>Add new Note {
             svgs.plusNote()

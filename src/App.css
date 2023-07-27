@@ -2,6 +2,8 @@ body {
   overflow-x: none;
   margin-top: 0;
   max-width: 100vw;
+  height: 100vmin;
+  width: 100vmin;
 }
 
 * {
@@ -105,7 +107,7 @@ svg {
 }
 
 .selected {
-  color: #73C0FC;;
+  color: #73C0FC;
 }
 
 .x-btn {
